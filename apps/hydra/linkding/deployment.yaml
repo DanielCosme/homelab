@@ -21,4 +21,11 @@ spec:
         ports:
         - containerPort: 9090
         resources: {}
+        volumeMounts:
+        - mountPath: /etc/linkding/data
+          name: data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: linking-pvc
 status: {}

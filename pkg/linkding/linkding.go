@@ -11,22 +11,26 @@ import (
 var meta kube.Metadata
 var Namespace = kube.Namespace("linkding")
 var srv core.Service
+var pvc core.PersistentVolumeClaim
 
 func init() {
 	meta = kube.NewMetadata("linking", Namespace)
 	srv = meta.Service(root.Linkding.Port)
+	pvc = meta.PVC()
 }
 
 func Stack() stack.Stack {
 	s := stack.NewStack("linkding", map[string]any{
 		"namespace":  Namespace,
 		"srv":        srv,
+		"pvc":        pvc,
 		"deployment": deployment(),
 	})
 	return s
 }
 
 func deployment() apps.Deployment {
+	storage := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
 	pod_spec := core.PodSpec{
 		Containers: []core.Container{
 			{
@@ -35,7 +39,16 @@ func deployment() apps.Deployment {
 				Ports: []core.ContainerPort{{
 					ContainerPort: root.Linkding.Port,
 				}},
+				VolumeMounts: []core.VolumeMount{
+					{
+						Name:      storage.Name,
+						MountPath: "/etc/linkding/data",
+					},
+				},
 			},
+		},
+		Volumes: []core.Volume{
+			storage,
 		},
 	}
 	return kube.NewDeployment(meta, pod_spec)
