@@ -8,6 +8,6 @@ type Service struct {
 
 var Linkding = Service{
 	Name:  "linkding",
-	Image: "sissbruecket/linkding:1.31.0",
+	Image: "sissbruecker/linkding:1.31.0",
 	Port:  9090,
 }
