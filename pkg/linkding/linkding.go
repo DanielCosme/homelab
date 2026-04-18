@@ -16,6 +16,8 @@ var pvc core.PersistentVolumeClaim
 func init() {
 	meta = kube.NewMetadata("linking", Namespace)
 	srv = meta.Service(root.Linkding.Port)
+	srv.Spec.Type = core.ServiceTypeNodePort
+	srv.Spec.Ports[0].NodePort = root.Linkding.Port
 	pvc = meta.PVC()
 }
 
@@ -33,17 +35,15 @@ func deployment() apps.Deployment {
 	storage := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
 	pod_spec := core.PodSpec{
 		SecurityContext: &core.PodSecurityContext{
-			RunAsUser:  new(int64(33)), // www-data user ID
-			RunAsGroup: new(int64(33)),
-			FSGroup:    new(int64(33)),
+			RunAsUser:  &root.Linkding.SecurityContextID,
+			RunAsGroup: &root.Linkding.SecurityContextID,
+			FSGroup:    &root.Linkding.SecurityContextID,
 		},
 		Containers: []core.Container{
 			{
-				Name:  root.Linkding.Name,
-				Image: root.Linkding.Image,
-				SecurityContext: &core.SecurityContext{
-					AllowPrivilegeEscalation: new(false),
-				},
+				Name:            root.Linkding.Name,
+				Image:           root.Linkding.Image,
+				SecurityContext: root.ContainerSecurityContext,
 				Ports: []core.ContainerPort{{
 					ContainerPort: root.Linkding.Port,
 				}},
