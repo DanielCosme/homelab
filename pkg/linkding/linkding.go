@@ -33,6 +33,9 @@ func Stack() stack.Stack {
 
 func deployment() apps.Deployment {
 	storage := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
+	envMapping := map[string]string{
+		"LD_CSRF_TRUSTED_ORIGINS": "https://link.danicos.me",
+	}
 	pod_spec := core.PodSpec{
 		SecurityContext: &core.PodSecurityContext{
 			RunAsUser:  &root.Linkding.SecurityContextID,
@@ -44,6 +47,7 @@ func deployment() apps.Deployment {
 				Name:            root.Linkding.Name,
 				Image:           root.Linkding.Image,
 				SecurityContext: root.ContainerSecurityContext,
+				Env:             kube.NewEnvVar(envMapping),
 				Ports: []core.ContainerPort{{
 					ContainerPort: root.Linkding.Port,
 				}},

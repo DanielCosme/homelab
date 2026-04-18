@@ -9,7 +9,7 @@ type Service struct {
 
 var Linkding = Service{
 	Name:              "linkding",
-	Image:             "sissbruecker/linkding:1.31.0",
+	Image:             "sissbruecker/linkding:1.45.0",
 	Port:              9090,
 	SecurityContextID: 33, // www-data user, group and FS ID
 }

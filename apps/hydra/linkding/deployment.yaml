@@ -16,7 +16,10 @@ spec:
         app: linking
     spec:
       containers:
-      - image: sissbruecker/linkding:1.31.0
+      - env:
+        - name: LD_CSRF_TRUSTED_ORIGINS
+          value: https://link.danicos.me
+        image: sissbruecker/linkding:1.45.0
         name: linkding
         ports:
         - containerPort: 9090
