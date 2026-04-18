@@ -13,9 +13,9 @@ import (
 	*/)
 
 var r target.Runner
-var Default = Run
+var Default = Build
 var Aliases = map[string]any{
-	"r": Run,
+	"b": Build,
 }
 
 func init() {
@@ -28,7 +28,7 @@ func init() {
 	r = target.NewRunner(Env, nil)
 }
 
-func Run() error {
+func Build() error {
 	t := target.NewA("go", "run", ".")
 	return r.RunV("run", t)
 }

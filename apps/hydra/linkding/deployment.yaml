@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: linking
+  name: linking
+  namespace: linkding
+spec:
+  selector:
+    matchLabels:
+      app: linking
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: linking
+    spec:
+      containers:
+      - image: sissbruecket/linkding:1.31.0
+        name: linkding
+        ports:
+        - containerPort: 9090
+        resources: {}
+status: {}

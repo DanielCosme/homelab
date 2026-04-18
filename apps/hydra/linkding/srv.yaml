@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: linking
+  name: linking
+  namespace: linkding
+spec:
+  ports:
+  - port: 9090
+    targetPort: 0
+  selector:
+    app: linking
+status:
+  loadBalancer: {}

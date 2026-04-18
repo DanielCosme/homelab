@@ -13,4 +13,4 @@ flux --kubeconfig ~/.kube/$CLUSTER_NAME \
 	--private=false \
 	--branch=main \
 	--personal=true \
-	--path=./clusters/hydra
+	--path=./clusters/$CLUSTER_NAME

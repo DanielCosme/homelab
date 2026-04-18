@@ -1,15 +1,37 @@
 package main
 
 import (
-	"danicos.dev/daniel/go-kube/pkg/kube"
+	"fmt"
+	"os"
+
+	"danicos.dev/daniel/go-kube/pkg/stack"
 	"danicos.dev/daniel/homelab/pkg/flux"
-	kustomizev1 "github.com/fluxcd/kustomize-controller/api/v1"
-)
+	"danicos.dev/daniel/homelab/pkg/linkding"
+	"danicos.dev/daniel/homelab/pkg/root"
+	/*
+		apps "k8s.io/api/apps/v1"
+		core "k8s.io/api/core/v1"
+		net "k8s.io/api/networking/v1"
+	*/)
 
 func main() {
-	meta := kube.NewMetadata("name", kube.Namespace("nae"))
-	kuz := kube.NewKustomization(meta, kustomizev1.KustomizationSpec{})
-	fluxStack := flux.Stack()
-	fluxStack.Add("apps", kuz)
-	fluxStack.MarshalYaml("")
+	flux_stack := flux.Stack()
+	err := flux_stack.MarshalYamlFlat(root.FLUX_CLUSTER_HYDRA_PATH)
+	assertNoErr(err)
+
+	hydraApps := map[string]stack.Stack{
+		"linkding": linkding.Stack(),
+	}
+	for name, s := range hydraApps {
+		fmt.Printf("STACK: %s\n", name)
+		err = s.MarshalYaml(root.FLUX_APPS_HYDRA_PATH)
+		assertNoErr(err)
+	}
+}
+
+func assertNoErr(err error) {
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
 }
