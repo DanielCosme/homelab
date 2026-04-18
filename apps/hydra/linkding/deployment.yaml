@@ -21,9 +21,15 @@ spec:
         ports:
         - containerPort: 9090
         resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
         volumeMounts:
         - mountPath: /etc/linkding/data
           name: data
+      securityContext:
+        fsGroup: 33
+        runAsGroup: 33
+        runAsUser: 33
       volumes:
       - name: data
         persistentVolumeClaim:

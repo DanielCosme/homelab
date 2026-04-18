@@ -32,19 +32,25 @@ func Stack() stack.Stack {
 func deployment() apps.Deployment {
 	storage := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
 	pod_spec := core.PodSpec{
+		SecurityContext: &core.PodSecurityContext{
+			RunAsUser:  new(int64(33)), // www-data user ID
+			RunAsGroup: new(int64(33)),
+			FSGroup:    new(int64(33)),
+		},
 		Containers: []core.Container{
 			{
 				Name:  root.Linkding.Name,
 				Image: root.Linkding.Image,
+				SecurityContext: &core.SecurityContext{
+					AllowPrivilegeEscalation: new(false),
+				},
 				Ports: []core.ContainerPort{{
 					ContainerPort: root.Linkding.Port,
 				}},
-				VolumeMounts: []core.VolumeMount{
-					{
-						Name:      storage.Name,
-						MountPath: "/etc/linkding/data",
-					},
-				},
+				VolumeMounts: []core.VolumeMount{{
+					Name:      storage.Name,
+					MountPath: "/etc/linkding/data",
+				}},
 			},
 		},
 		Volumes: []core.Volume{
@@ -53,3 +59,5 @@ func deployment() apps.Deployment {
 	}
 	return kube.NewDeployment(meta, pod_spec)
 }
+
+// kubectl --kubeconfig ~/.kube/hydra -n linkding exec -it linking-67f686679d-2tfrk -- python manage.py createsuperuser --username=daniel --email=danicosme@pm.me
