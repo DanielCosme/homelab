@@ -17,7 +17,7 @@ func init() {
 	meta = kube.NewMetadata("linking", Namespace)
 	srv = meta.Service(root.Linkding.Port)
 	srv.Spec.Type = core.ServiceTypeNodePort
-	srv.Spec.Ports[0].NodePort = root.Linkding.Port
+	srv.Spec.Ports[0].NodePort = 30010
 	pvc = meta.PVC()
 }
 
