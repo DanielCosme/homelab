@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
 echo HOST: $CLUSTER_HOST
 echo USER: $LINUX_ADMIN

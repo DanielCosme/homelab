@@ -19,10 +19,10 @@ func main() {
 	err := flux_stack.MarshalYamlFlat(root.FLUX_CLUSTER_HYDRA_PATH)
 	assertNoErr(err)
 
-	hydraApps := map[string]stack.Stack{
+	hydra_apps := map[string]stack.Stack{
 		"linkding": linkding.Stack(),
 	}
-	for name, s := range hydraApps {
+	for name, s := range hydra_apps {
 		fmt.Printf("STACK: %s\n", name)
 		err = s.MarshalYaml(root.FLUX_APPS_HYDRA_PATH)
 		assertNoErr(err)

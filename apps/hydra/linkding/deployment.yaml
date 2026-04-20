@@ -19,6 +19,16 @@ spec:
       - env:
         - name: LD_CSRF_TRUSTED_ORIGINS
           value: https://link.danicos.me
+        - name: LD_SUPERUSER_NAME
+          valueFrom:
+            secretKeyRef:
+              key: supe_user_name
+              name: linkding
+        - name: LD_SUPERUSER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: supe_user_password
+              name: linkding
         image: sissbruecker/linkding:1.45.0
         name: linkding
         ports:

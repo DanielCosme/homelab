@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
 echo CLUSTER NAME: $CLUSTER_NAME
 echo HOST: $CLUSTER_HOST

@@ -17,7 +17,25 @@ The GitOps controller is running in a constant loop and always matches the Git s
 flux vs ArgoCD
 Flux is more CLI Driven ArgoCD has a richer GUI
 
+## Dev dependencies
+- AGE
+- SOPS
+- Go Toolchain
+
+## Secrets
+Some secrets are written a Go files, they must be decrypted first.
+Once decrypted they show up at `./pkg/secrets/..`. Note that they are referenced in `./cmd/secrets/main.go`.
+
 ## Flux
 Prerequisites:
 - Kubernetes Cluster
 -Github (giea, etc) personal access token
+
+### Managing secrets with SOPS
+First step to manage secrets in Flux with SOPS, is to add the secret-key to Kubernetes and make it accessible to the flux system.
+
+To decrypt secrets use:
+```sh
+sops --decrypt <file_path>
+```
+There must be an environment variable named `SOPS_AGE_KEY_FILE` that contains the path of the AGE key text file.

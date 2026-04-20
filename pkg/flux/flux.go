@@ -7,6 +7,7 @@ import (
 	"danicos.dev/daniel/go-kube/pkg/stack"
 	"danicos.dev/daniel/homelab/pkg/root"
 	kz "github.com/fluxcd/kustomize-controller/api/v1"
+	flux_meta "github.com/fluxcd/pkg/apis/meta"
 	meta "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -28,6 +29,12 @@ func Apps() kz.Kustomization {
 	retryInteval := durMin(1)
 	timeout := durMin(5)
 	spec := kz.KustomizationSpec{
+		Decryption: &kz.Decryption{
+			Provider: root.FLUX_DECRYPTION_PROVIDER,
+			SecretRef: &flux_meta.LocalObjectReference{
+				Name: "sops-age",
+			},
+		},
 		Interval:      durMin(10),
 		RetryInterval: &retryInteval,
 		Timeout:       &timeout,

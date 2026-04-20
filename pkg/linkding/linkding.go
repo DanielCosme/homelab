@@ -8,6 +8,16 @@ import (
 	core "k8s.io/api/core/v1"
 )
 
+var Secret = struct {
+	Name                 string
+	SuperUserKey         string
+	SuperUserPasswordKey string
+}{
+	Name:                 root.Linkding.Name,
+	SuperUserKey:         "supe_user_name",
+	SuperUserPasswordKey: "supe_user_password",
+}
+
 var meta kube.Metadata
 var Namespace = kube.Namespace("linkding")
 var srv core.Service
@@ -36,6 +46,10 @@ func deployment() apps.Deployment {
 	envMapping := map[string]string{
 		"LD_CSRF_TRUSTED_ORIGINS": "https://link.danicos.me",
 	}
+	secretMapping := map[string]string{
+		"LD_SUPERUSER_NAME":     Secret.SuperUserKey,
+		"LD_SUPERUSER_PASSWORD": Secret.SuperUserPasswordKey,
+	}
 	pod_spec := core.PodSpec{
 		SecurityContext: &core.PodSecurityContext{
 			RunAsUser:  &root.Linkding.SecurityContextID,
@@ -47,7 +61,7 @@ func deployment() apps.Deployment {
 				Name:            root.Linkding.Name,
 				Image:           root.Linkding.Image,
 				SecurityContext: root.ContainerSecurityContext,
-				Env:             kube.NewEnvVar(envMapping),
+				Env:             kube.NewEnvVarWithSecret(envMapping, secretMapping, Secret.Name),
 				Ports: []core.ContainerPort{{
 					ContainerPort: root.Linkding.Port,
 				}},
@@ -64,4 +78,4 @@ func deployment() apps.Deployment {
 	return kube.NewDeployment(meta, pod_spec)
 }
 
-// kubectl --kubeconfig ~/.kube/hydra -n linkding exec -it linking-67f686679d-2tfrk -- python manage.py createsuperuser --username=daniel --email=danicosme@pm.me
+// kubectl -n linkding exec -it linking-67f686679d-2tfrk -- python manage.py createsuperuser --username=daniel --email=danicosme@pm.me
