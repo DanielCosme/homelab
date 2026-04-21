@@ -15,10 +15,16 @@ PUBLIC_KEY=$(age-keygen -y $AGE_KEY_NO_PQ)
 SECRETS_ENC_PATH=$HYDRA_SECRETS_PATH
 mkdir -p $SECRETS_ENC_PATH
 for FILE in $SECRETS_FOLDER/*; do
-	sops --encrypt --in-place $FILE
+	FILENAME="${FILE##*/}"
+	DEST=$SECRETS_ENC_PATH/$FILENAME
 
-  FILENAME="${FILE##*/}"
-  DEST=$SECRETS_ENC_PATH/$FILENAME
+	if [ "$FILENAME" = "kuztomization.yaml" ]; then
+		mv $FILE $DEST
+		echo "Moving UNENCRYPTED $FILE"
+		continue
+	fi
+
+	sops --encrypt --in-place $FILE
   echo Moving encrypted file to $DEST
   mv $FILE $DEST
 done

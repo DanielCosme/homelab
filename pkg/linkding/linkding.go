@@ -32,13 +32,15 @@ func init() {
 }
 
 func Stack() stack.Stack {
-	s := stack.NewStack("linkding", map[string]any{
-		"namespace":  Namespace,
-		"srv":        srv,
-		"pvc":        pvc,
-		"deployment": deployment(),
-	})
-	return s
+	kz := kube.NewKuztomizedStack(
+		map[string]any{
+			"namespace":  Namespace,
+			"srv":        srv,
+			"pvc":        pvc,
+			"deployment": deployment(),
+		},
+	)
+	return kz.Stack("linkding")
 }
 
 func deployment() apps.Deployment {

@@ -19,6 +19,7 @@ func init() {
 }
 
 func Stack() stack.Stack {
+
 	s := stack.NewStack("flux", map[string]any{
 		"apps": Apps(),
 	})
@@ -45,7 +46,7 @@ func Apps() kz.Kustomization {
 		Path:  root.FLUX_APPS_HYDRA_PATH,
 		Prune: true,
 	}
-	return kube.NewKustomization(flux_apps_meta, spec)
+	return kube.NewFluxKustomization(flux_apps_meta, spec)
 }
 
 func durMin(d int64) meta.Duration {
