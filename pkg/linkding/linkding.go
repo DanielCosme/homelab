@@ -33,6 +33,7 @@ func init() {
 
 func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
+		meta,
 		map[string]any{
 			"namespace":  Namespace,
 			"srv":        srv,
