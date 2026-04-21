@@ -9,7 +9,7 @@ spec:
       chart: kube-prometheus-stack
       interval: 12h0m0s
       sourceRef:
-        kind: HelmRelease
+        kind: HelmRepository
         name: monitoring
         namespace: monitoring
       version: 66.x

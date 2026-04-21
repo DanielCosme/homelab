@@ -65,7 +65,7 @@ func PrometheusRelease() helm.HelmRelease {
 				Version:  root.HELM_PROMETHEUS_CHART_VERSION,
 				Interval: &interval,
 				SourceRef: helm.CrossNamespaceObjectReference{
-					Kind:      kube.FluxHelmReleaseMeta.Kind,
+					Kind:      kube.FluxHelmRepositoryMeta.Kind,
 					Name:      meta.Meta().Name,
 					Namespace: Namespace.Name,
 				},
