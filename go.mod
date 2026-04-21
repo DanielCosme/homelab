@@ -3,10 +3,11 @@ module danicos.dev/daniel/homelab
 go 1.26.2
 
 require (
-	danicos.dev/daniel/go-kube v1.3.3
+	danicos.dev/daniel/go-kube v1.5.0
 	github.com/fatih/color v1.19.0
 	github.com/fluxcd/kustomize-controller/api v1.8.3
 	github.com/fluxcd/pkg/apis/meta v1.25.1
+	github.com/fluxcd/source-controller/api v1.8.3
 	github.com/magefile/mage v1.17.1
 	k8s.io/api v0.35.2
 	k8s.io/apimachinery v0.35.2
@@ -14,6 +15,8 @@ require (
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/fluxcd/helm-controller/api v1.5.4 // indirect
+	github.com/fluxcd/pkg/apis/acl v0.9.0 // indirect
 	github.com/fluxcd/pkg/apis/kustomize v1.15.1 // indirect
 	github.com/fxamacker/cbor/v2 v2.9.0 // indirect
 	github.com/go-errors/errors v1.4.2 // indirect
@@ -32,9 +35,9 @@ require (
 	github.com/x448/float16 v0.8.4 // indirect
 	go.yaml.in/yaml/v2 v2.4.3 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
-	golang.org/x/net v0.49.0 // indirect
-	golang.org/x/sys v0.42.0 // indirect
-	golang.org/x/text v0.33.0 // indirect
+	golang.org/x/net v0.53.0 // indirect
+	golang.org/x/sys v0.43.0 // indirect
+	golang.org/x/text v0.36.0 // indirect
 	google.golang.org/protobuf v1.36.8 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

@@ -47,7 +47,7 @@ func Stack() stack.Stack {
 func deployment() apps.Deployment {
 	storage := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
 	envMapping := map[string]string{
-		"LD_CSRF_TRUSTED_ORIGINS": "https://link.danicos.me",
+		"LD_CSRF_TRUSTED_ORIGINS": root.Linkding.PublicURL,
 	}
 	secretMapping := map[string]string{
 		"LD_SUPERUSER_NAME":     Secret.SuperUserKey,

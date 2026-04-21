@@ -11,22 +11,20 @@ import (
 	meta "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-var flux_apps_meta kube.Metadata
 var Flux_namespace = kube.Namespace(root.FLUX_NAMESPACE)
 
-func init() {
-	flux_apps_meta = kube.NewMetadata("apps", Flux_namespace)
-}
-
 func Stack() stack.Stack {
+	flux_apps_meta := kube.NewMetadata("apps", Flux_namespace)
+	flux_infra_meta := kube.NewMetadata("infrastructure", Flux_namespace)
 
 	s := stack.NewStack("flux", map[string]any{
-		"apps": Apps(),
+		"apps":  kuztomization(flux_apps_meta, root.FLUX_APPS_HYDRA_PATH),
+		"infra": kuztomization(flux_infra_meta, root.FLUX_INFRA_HYDRA_PATH),
 	})
 	return s
 }
 
-func Apps() kz.Kustomization {
+func kuztomization(meta kube.Metadata, path string) kz.Kustomization {
 	retryInteval := durMin(1)
 	timeout := durMin(5)
 	spec := kz.KustomizationSpec{
@@ -43,10 +41,10 @@ func Apps() kz.Kustomization {
 			Kind: "GitRepository",
 			Name: Flux_namespace.Name,
 		},
-		Path:  root.FLUX_APPS_HYDRA_PATH,
+		Path:  path,
 		Prune: true,
 	}
-	return kube.NewFluxKustomization(flux_apps_meta, spec)
+	return kube.NewFluxKustomization(meta, spec)
 }
 
 func durMin(d int64) meta.Duration {

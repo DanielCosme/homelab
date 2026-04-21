@@ -15,11 +15,19 @@ const (
 )
 
 const (
-	FLUX_NAMESPACE               = "flux-system"
-	FLUX_APPS_HYDRA_PATH         = "./apps/" + HYDRA_CLUSTER
-	FLUX_APPS_SECRETS_HYDRA_PATH = "./apps/" + HYDRA_CLUSTER + "/secrets"
-	FLUX_CLUSTER_HYDRA_PATH      = "./clusters/" + HYDRA_CLUSTER
-	FLUX_DECRYPTION_PROVIDER     = "sops"
+	FLUX_NAMESPACE                = "flux-system"
+	FLUX_APPS_HYDRA_PATH          = "./apps/" + HYDRA_CLUSTER
+	FLUX_APPS_SECRETS_HYDRA_PATH  = "./apps/" + HYDRA_CLUSTER + "/secrets"
+	FLUX_CLUSTER_HYDRA_PATH       = "./clusters/" + HYDRA_CLUSTER
+	FLUX_INFRA_HYDRA_PATH         = "./infrastructure/" + HYDRA_CLUSTER
+	FLUX_DECRYPTION_PROVIDER      = "sops"
+	FLUX_HELM_MONITORING_INTERVAL = 24 // in hours
+)
+
+const (
+	HELM_PROMETHEUS_URL           = "https://prometheus-community.github.io/helm-charts"
+	HELM_PROMETHEUS_CHART         = "kube-prometheus-stack"
+	HELM_PROMETHEUS_CHART_VERSION = "66.x"
 )
 
 var (
