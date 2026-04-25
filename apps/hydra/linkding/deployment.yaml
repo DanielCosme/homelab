@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: linking
+  name: linking
+  namespace: linkding
+spec:
+  selector:
+    matchLabels:
+      app: linking
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: linking
+    spec:
+      containers:
+      - env:
+        - name: LD_CSRF_TRUSTED_ORIGINS
+          value: https://link.danicos.me
+        - name: LD_SUPERUSER_NAME
+          valueFrom:
+            secretKeyRef:
+              key: supe_user_name
+              name: linkding
+        - name: LD_SUPERUSER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: supe_user_password
+              name: linkding
+        image: sissbruecker/linkding:1.45.0
+        name: linkding
+        ports:
+        - containerPort: 9090
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+        volumeMounts:
+        - mountPath: /etc/linkding/data
+          name: data
+      securityContext:
+        fsGroup: 33
+        runAsGroup: 33
+        runAsUser: 33
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: linking-pvc
+status: {}
