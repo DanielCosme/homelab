@@ -48,6 +48,20 @@ func InstallK3S() error {
 	return r.RunV("Install k3s", t)
 }
 
+func InstallK3S_worker() error {
+	for _, host := range root.HYDRA_WORKERS {
+		Env := map[string]string{
+			"LINUX_ADMIN":  "arch",
+			"CLUSTER_HOST": root.HYDRA_HOSTNAME,
+			"HYDRA_WORKER": host,
+		}
+		r = target.NewRunner(Env, nil)
+		t := target.New("./scripts/install_k3s_worker.sh")
+		r.RunV("Install worker k3s", t)
+	}
+	return nil
+}
+
 func GetKubeconfig() error {
 	t := target.New("./scripts/get_kubeconfig.sh")
 	return r.RunV("Get Kubeconfig", t)

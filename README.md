@@ -48,5 +48,4 @@ Object Storage from NAS
 Block Storage from NAS
 
 Distributed Storage from:
-	- RookFS
 	- Longhorn

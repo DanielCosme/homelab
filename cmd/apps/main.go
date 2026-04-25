@@ -7,6 +7,7 @@ import (
 	"danicos.dev/daniel/go-kube/pkg/stack"
 	"danicos.dev/daniel/homelab/pkg/flux"
 	"danicos.dev/daniel/homelab/pkg/linkding"
+	"danicos.dev/daniel/homelab/pkg/longhorn"
 	"danicos.dev/daniel/homelab/pkg/monitoring"
 	"danicos.dev/daniel/homelab/pkg/root"
 	/*
@@ -24,8 +25,17 @@ func main() {
 		"controllers": monitoring.Controllers(),
 	}
 	for name, s := range hydra_monitoring {
-		fmt.Printf("STACK: %s\n", name)
+		fmt.Printf("Monitoring STACK: %s\n", name)
 		err = s.MarshalYaml(root.FLUX_INFRA_HYDRA_PATH + "/monitoring")
+		assertNoErr(err)
+	}
+
+	hydra_longhorn := map[string]stack.Stack{
+		"controllers": longhorn.Controllers(),
+	}
+	for name, s := range hydra_longhorn {
+		fmt.Printf("Longhorn STACK: %s\n", name)
+		err = s.MarshalYaml(root.FLUX_INFRA_HYDRA_PATH + "/longhorn")
 		assertNoErr(err)
 	}
 

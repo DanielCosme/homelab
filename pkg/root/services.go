@@ -17,3 +17,4 @@ var Linkding = Service{
 }
 
 var Monitoring = "monitoring"
+var Longhorn = "longhorn"
