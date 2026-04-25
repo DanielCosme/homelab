@@ -1,6 +1,6 @@
 # This file should be in: /etc/rancher/k3s/config.yaml
 write-kubeconfig-mode: "0644"
 disable:
-  - helm-controller
+  - helm-controller #
 # tls-san:
 #   - "kube.danicos.dev"

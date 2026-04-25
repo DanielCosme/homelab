@@ -1,4 +1,6 @@
-# GitOps
+## Homelab
+
+## GitOps
 A set of "best practices" where the entire code delivery process is controlled via Git, including infrastructure and application definition as code and automation to complete updates and rollbacks.
 
 The key GitOps Principles:
@@ -39,3 +41,12 @@ To decrypt secrets use:
 sops --decrypt <file_path>
 ```
 There must be an environment variable named `SOPS_AGE_KEY_FILE` that contains the path of the AGE key text file.
+
+## Pending
+### Storage
+Object Storage from NAS
+Block Storage from NAS
+
+Distributed Storage from:
+	- RookFS
+	- Longhorn

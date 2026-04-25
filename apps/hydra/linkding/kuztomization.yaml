@@ -5,6 +5,3 @@ metadata:
   namespace: linkding
 resources:
 - namespace.yaml
-- srv.yaml
-- pvc.yaml
-- deployment.yaml
