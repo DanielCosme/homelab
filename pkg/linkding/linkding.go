@@ -35,10 +35,10 @@ func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
 		meta,
 		map[string]any{
-			"namespace": Namespace,
-			// "srv":        srv,
-			// "pvc":        pvc,
-			// "deployment": deployment(),
+			"namespace":  Namespace,
+			"srv":        srv,
+			"pvc":        pvc,
+			"deployment": deployment(),
 		},
 	)
 	return kz.Stack("linkding")
