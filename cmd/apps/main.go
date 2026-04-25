@@ -21,21 +21,13 @@ func main() {
 	err := flux_stack.MarshalYamlFlat(root.FLUX_CLUSTER_HYDRA_PATH)
 	assertNoErr(err)
 
-	hydra_monitoring := map[string]stack.Stack{
-		"controllers": monitoring.Controllers(),
+	hydra_infrastructure := map[string]stack.Stack{
+		"monitoring": monitoring.Stack(),
+		"longhorn":   longhorn.Stack(),
 	}
-	for name, s := range hydra_monitoring {
-		fmt.Printf("Monitoring STACK: %s\n", name)
-		err = s.MarshalYaml(root.FLUX_INFRA_HYDRA_PATH + "/monitoring")
-		assertNoErr(err)
-	}
-
-	hydra_longhorn := map[string]stack.Stack{
-		"controllers": longhorn.Controllers(),
-	}
-	for name, s := range hydra_longhorn {
-		fmt.Printf("Longhorn STACK: %s\n", name)
-		err = s.MarshalYaml(root.FLUX_INFRA_HYDRA_PATH + "/longhorn")
+	for name, s := range hydra_infrastructure {
+		fmt.Printf("STACK: %s\n", name)
+		err = s.MarshalYaml(root.FLUX_INFRA_HYDRA_PATH)
 		assertNoErr(err)
 	}
 

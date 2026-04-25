@@ -18,13 +18,12 @@ func init() {
 	meta = kube.NewMetadata(root.Longhorn, Namespace)
 }
 
-func Controllers() stack.Stack {
-	s := stack.NewStack("controllers", map[string]any{
+func Stack() stack.Stack {
+	s := stack.NewStack("longhorn", map[string]any{
 		"namespace":      Namespace,
 		"longhorn-stack": LonghornHelmSource(),
 		"release":        LonghornHelmRelease(),
 	})
-
 	return s
 }
 

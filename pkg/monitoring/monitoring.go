@@ -21,8 +21,8 @@ func init() {
 	meta = kube.NewMetadata(root.Monitoring, Namespace)
 }
 
-func Controllers() stack.Stack {
-	s := stack.NewStack("controllers", map[string]any{
+func Stack() stack.Stack {
+	s := stack.NewStack("monitoring", map[string]any{
 		"namespace":             Namespace,
 		"kube-prometheus-stack": PrometheusHelmSource(),
 		"release":               PrometheusRelease(),

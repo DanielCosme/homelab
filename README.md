@@ -1,5 +1,6 @@
 ## Homelab
 
+
 ## GitOps
 A set of "best practices" where the entire code delivery process is controlled via Git, including infrastructure and application definition as code and automation to complete updates and rollbacks.
 
@@ -49,3 +50,12 @@ Block Storage from NAS
 
 Distributed Storage from:
 	- Longhorn
+	
+	
+# True NAS key
+1-ndzlY0C6o2KW9DJHnjTcjXi49VEFgDp5Up8GZ7FXmgNoU7LNwwI7MMrk2WbI6o5J
+
+## NFS
+Via NAS for Files, like photos, videos, etc...
+## ISCS
+Via NAS for Databases
