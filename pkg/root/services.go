@@ -16,5 +16,6 @@ var Linkding = Service{
 	SecurityContextID: 33, // www-data user, group and FS ID
 }
 
-var Monitoring = "monitoring"
 var Longhorn = "longhorn"
+var Monitoring = "monitoring"
+var TrueNAS_CSI = "truenas-csi"

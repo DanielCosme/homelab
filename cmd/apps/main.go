@@ -10,6 +10,7 @@ import (
 	"danicos.dev/daniel/homelab/pkg/longhorn"
 	"danicos.dev/daniel/homelab/pkg/monitoring"
 	"danicos.dev/daniel/homelab/pkg/root"
+	"danicos.dev/daniel/homelab/pkg/truenas"
 	/*
 		apps "k8s.io/api/apps/v1"
 		core "k8s.io/api/core/v1"
@@ -22,8 +23,9 @@ func main() {
 	assertNoErr(err)
 
 	hydra_infrastructure := map[string]stack.Stack{
-		"monitoring": monitoring.Stack(),
-		"longhorn":   longhorn.Stack(),
+		"monitoring":  monitoring.Stack(),
+		"longhorn":    longhorn.Stack(),
+		"truenas-csi": truenas.Stack(),
 	}
 	for name, s := range hydra_infrastructure {
 		fmt.Printf("STACK: %s\n", name)
