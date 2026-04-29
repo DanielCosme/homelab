@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
+	"danicos.dev/daniel/go-kube/pkg/flux"
 	"danicos.dev/daniel/go-kube/pkg/kube"
 	"danicos.dev/daniel/go-kube/pkg/stack"
 	"danicos.dev/daniel/homelab/pkg/root"
@@ -36,7 +37,7 @@ func PrometheusHelmSource() source.HelmRepository {
 		Interval: durHour(root.FLUX_HELM_MONITORING_INTERVAL),
 		URL:      root.HELM_PROMETHEUS_URL,
 	}
-	return kube.NewFluxHelmRepositorySource(meta, spec)
+	return flux.NewFluxHelmRepositorySource(meta, spec)
 }
 
 func PrometheusRelease() helm.HelmRelease {
@@ -65,7 +66,7 @@ func PrometheusRelease() helm.HelmRelease {
 				Version:  root.HELM_PROMETHEUS_CHART_VERSION,
 				Interval: &interval,
 				SourceRef: helm.CrossNamespaceObjectReference{
-					Kind:      kube.FluxHelmRepositoryMeta.Kind,
+					Kind:      flux.MetaHelmRepository.Kind,
 					Name:      meta.Meta().Name,
 					Namespace: Namespace.Name,
 				},
@@ -88,7 +89,7 @@ func PrometheusRelease() helm.HelmRelease {
 		},
 		Values: &apiextensionsv1.JSON{Raw: raw},
 	}
-	return kube.NewFluxHelmRelease(meta, spec)
+	return flux.NewFluxHelmRelease(meta, spec)
 }
 
 func durHour(d int64) metav1.Duration {

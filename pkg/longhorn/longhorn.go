@@ -3,6 +3,7 @@ package longhorn
 import (
 	"time"
 
+	"danicos.dev/daniel/go-kube/pkg/flux"
 	"danicos.dev/daniel/go-kube/pkg/kube"
 	"danicos.dev/daniel/go-kube/pkg/stack"
 	"danicos.dev/daniel/homelab/pkg/root"
@@ -32,7 +33,7 @@ func LonghornHelmSource() source.HelmRepository {
 		Interval: durHour(root.FLUX_HELM_MONITORING_INTERVAL),
 		URL:      root.HELM_LONGHORN_URL,
 	}
-	return kube.NewFluxHelmRepositorySource(meta, spec)
+	return flux.NewFluxHelmRepositorySource(meta, spec)
 }
 
 func LonghornHelmRelease() helm.HelmRelease {
@@ -45,7 +46,7 @@ func LonghornHelmRelease() helm.HelmRelease {
 				Version:  root.HELM_LONGHORN_CHART_VERSION,
 				Interval: &interval,
 				SourceRef: helm.CrossNamespaceObjectReference{
-					Kind:      kube.FluxHelmRepositoryMeta.Kind,
+					Kind:      flux.MetaHelmRepository.Kind,
 					Name:      meta.Meta().Name,
 					Namespace: Namespace.Name,
 				},
@@ -58,7 +59,7 @@ func LonghornHelmRelease() helm.HelmRelease {
 			CRDs: helm.CreateReplace,
 		},
 	}
-	return kube.NewFluxHelmRelease(meta, spec)
+	return flux.NewFluxHelmRelease(meta, spec)
 }
 
 func durHour(d int64) metav1.Duration {

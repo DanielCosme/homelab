@@ -3,6 +3,7 @@ package flux
 import (
 	"time"
 
+	"danicos.dev/daniel/go-kube/pkg/flux"
 	"danicos.dev/daniel/go-kube/pkg/kube"
 	"danicos.dev/daniel/go-kube/pkg/stack"
 	"danicos.dev/daniel/homelab/pkg/root"
@@ -44,7 +45,7 @@ func kuztomization(meta kube.Metadata, path string) kz.Kustomization {
 		Path:  path,
 		Prune: true,
 	}
-	return kube.NewFluxKustomization(meta, spec)
+	return flux.NewFluxKustomization(meta, spec)
 }
 
 func durMin(d int64) meta.Duration {

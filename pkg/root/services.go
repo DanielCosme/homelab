@@ -16,6 +16,9 @@ var Linkding = Service{
 	SecurityContextID: 33, // www-data user, group and FS ID
 }
 
-var Longhorn = "longhorn"
-var Monitoring = "monitoring"
-var TrueNAS_CSI = "truenas-csi"
+var (
+	Longhorn    = "longhorn"
+	Monitoring  = "monitoring"
+	TrueNAS_CSI = "truenas-csi"
+	TrueNASURL  = "apex-truenas.orca-uaru.ts.net"
+)

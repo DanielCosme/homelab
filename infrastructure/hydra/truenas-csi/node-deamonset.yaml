@@ -1,0 +1,170 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: truenas-csi-node
+  name: truenas-csi-node
+  namespace: truenas-csi
+spec:
+  selector:
+    matchLabels:
+      app: truenas-csi-node
+  template:
+    metadata:
+      labels:
+        app: truenas-csi-node
+    spec:
+      containers:
+      - args:
+        - --endpoint=$(CSI_ENDPOINT)
+        - --node-id=$(NODE_ID)
+        - --mode=node
+        - --v=4
+        env:
+        - name: CSI_ENDPOINT
+          value: unix:///csi/csi.sock
+        - name: TRUENAS_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: api-key
+              name: truenas-csi-api-credentials
+        - name: NODE_ID
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: TRUENAS_DEFAULT_POOL
+          valueFrom:
+            configMapKeyRef:
+              key: defaultPool
+              name: truenas-csi
+        - name: TRUENAS_INSECURE_SKIP_VERIFY
+          valueFrom:
+            configMapKeyRef:
+              key: truenasInsecure
+              name: truenas-csi
+        - name: TRUENAS_ISCSI_IQN_BASE
+          valueFrom:
+            configMapKeyRef:
+              key: iscsiIQNBase
+              name: truenas-csi
+        - name: TRUENAS_ISCSI_PORTAL
+          valueFrom:
+            configMapKeyRef:
+              key: iscsiPortal
+              name: truenas-csi
+        - name: TRUENAS_NFS_SERVER
+          valueFrom:
+            configMapKeyRef:
+              key: nfsServer
+              name: truenas-csi
+        - name: TRUENAS_URL
+          valueFrom:
+            configMapKeyRef:
+              key: truenasURL
+              name: truenas-csi
+        image: ghcr.io/truenas/truenas-csi:latest
+        imagePullPolicy: IfNotPresent
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - mkdir -p /run/lock/iscsi && mv /usr/sbin/iscsiadm /usr/sbin/iscsiadm.orig
+                2>/dev/null; printf '#!/bin/sh\nnsenter --mount=/host/proc/1/ns/mnt
+                -- /usr/sbin/iscsiadm "$@"\n' > /usr/sbin/iscsiadm && chmod +x /usr/sbin/iscsiadm
+        livenessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /healthz
+            port: 9808
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 3
+        name: csi-node
+        resources: {}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /csi
+          name: plugin-dir
+        - mountPath: /var/lib/kubelet
+          name: kubelet-dir
+        - mountPath: /dev
+          name: device-dir
+        - mountPath: /etc/iscsi
+          mountPropagation: Bidirectional
+          name: iscsi-dir
+        - mountPath: /var/lib/iscsi
+          mountPropagation: Bidirectional
+          name: iscsi-lib
+        - mountPath: /
+          mountPropagation: Bidirectional
+          name: host-root
+      - args:
+        - --csi-address=$(ADDRESS)
+        - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+        - --v=5
+        env:
+        - name: ADDRESS
+          value: /csi/csi.sock
+        - name: DRIVER_REG_SOCK_PATH
+          value: /var/lib/kubelet/plugins/csi.truenas.io/csi.sock
+        image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.16.0
+        name: csi-node-driver-registrar
+        resources: {}
+        volumeMounts:
+        - mountPath: /csi
+          name: plugin-dir
+        - mountPath: /registration
+          name: registration-dir
+      - args:
+        - --csi-address=/csi/csi.sock
+        - --health-port=9808
+        image: registry.k8s.io/sig-storage/livenessprobe:v2.18.0
+        name: liveness-probe
+        resources: {}
+        volumeMounts:
+        - mountPath: /csi
+          name: plugin-dir
+      hostIPC: true
+      hostNetwork: true
+      hostPID: true
+      priorityClassName: system-node-critical
+      serviceAccountName: truenas-csi-node-sa
+      tolerations:
+      - operator: Exists
+      volumes:
+      - hostPath:
+          path: /var/lib/kubelet/plugins_registry/
+          type: DirectoryOrCreate
+        name: registration-dir
+      - hostPath:
+          path: /var/lib/kubelet/plugins/csi.truenas.io/
+          type: DirectoryOrCreate
+        name: plugin-dir
+      - hostPath:
+          path: /var/lib/kubelet
+          type: Directory
+        name: kubelet-dir
+      - hostPath:
+          path: /dev
+        name: device-dir
+      - hostPath:
+          path: /etc/iscsi
+          type: Directory
+        name: iscsi-dir
+      - hostPath:
+          path: /var/lib/iscsi
+          type: DirectoryOrCreate
+        name: iscsi-lib
+      - hostPath:
+          path: /
+          type: Directory
+        name: host-root
+  updateStrategy: {}
+status:
+  currentNumberScheduled: 0
+  desiredNumberScheduled: 0
+  numberMisscheduled: 0
+  numberReady: 0
