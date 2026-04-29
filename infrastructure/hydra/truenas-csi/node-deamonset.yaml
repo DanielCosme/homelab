@@ -98,7 +98,7 @@ spec:
         - mountPath: /var/lib/iscsi
           mountPropagation: Bidirectional
           name: iscsi-lib
-        - mountPath: /
+        - mountPath: /host
           mountPropagation: Bidirectional
           name: host-root
       - args:

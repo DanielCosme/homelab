@@ -369,7 +369,7 @@ func nodeCSI() apps.DaemonSet {
 					},
 					{
 						Name:             hostRoot.Name,
-						MountPath:        "/",
+						MountPath:        "/host",
 						MountPropagation: new(core.MountPropagationBidirectional),
 					},
 				},
