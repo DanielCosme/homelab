@@ -6,6 +6,7 @@ metadata:
 spec:
   affinity: {}
   instances: 3
+  managed: {}
   postgresql:
     syncReplicaElectionConstraint:
       enabled: false

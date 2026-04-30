@@ -19,15 +19,15 @@ var Secret = struct {
 }
 
 var meta kube.Metadata
-var Namespace = kube.Namespace("linkding")
+var Namespace = kube.Namespace(root.Linkding.Name)
 var srv core.Service
 var pvc core.PersistentVolumeClaim
 
 func init() {
-	meta = kube.NewMetadata("linking", Namespace)
+	meta = kube.NewMetadata(root.Linkding.Name, Namespace)
 	srv = meta.Service(root.Linkding.Port)
 	srv.Spec.Type = core.ServiceTypeNodePort
-	srv.Spec.Ports[0].NodePort = 30010
+	srv.Spec.Ports[0].NodePort = int32(root.Linkding.Public.NodePort)
 	pvc = meta.PVC()
 }
 
@@ -47,7 +47,7 @@ func Stack() stack.Stack {
 func deployment() apps.Deployment {
 	storage := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
 	envMapping := map[string]string{
-		"LD_CSRF_TRUSTED_ORIGINS": root.Linkding.PublicURL,
+		"LD_CSRF_TRUSTED_ORIGINS": root.Linkding.Public.URL,
 	}
 	secretMapping := map[string]string{
 		"LD_SUPERUSER_NAME":     Secret.SuperUserKey,
