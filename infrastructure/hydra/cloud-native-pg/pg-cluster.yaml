@@ -6,7 +6,11 @@ metadata:
 spec:
   affinity: {}
   instances: 3
-  managed: {}
+  managed:
+    roles:
+    - name: immich
+      passwordSecret:
+        name: immich
   postgresql:
     syncReplicaElectionConstraint:
       enabled: false

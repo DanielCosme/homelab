@@ -2,6 +2,7 @@ package cnpg
 
 import (
 	"danicos.dev/daniel/go-kube/pkg/kube"
+	"danicos.dev/daniel/homelab/pkg/immich"
 	"danicos.dev/daniel/homelab/pkg/root"
 
 	kube_cnpg "danicos.dev/daniel/go-kube/pkg/cnpg"
@@ -22,7 +23,14 @@ func Cluster() pg.Cluster {
 			},
 		},
 		Managed: &pg.ManagedConfiguration{
-			Roles: []pg.RoleConfiguration{},
+			Roles: []pg.RoleConfiguration{
+				{
+					Name: root.Immich.Name,
+					PasswordSecret: &pg.LocalObjectReference{
+						Name: immich.Secret.Name,
+					},
+				},
+			},
 		},
 	}
 	return kube_cnpg.NewCluster(meta, spec)
