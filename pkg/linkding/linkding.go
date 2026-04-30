@@ -19,7 +19,7 @@ var Secret = struct {
 }
 
 var meta kube.Metadata
-var Namespace = kube.Namespace(root.Linkding.Name)
+var Namespace = kube.Namespace("linkding")
 var srv core.Service
 var pvc core.PersistentVolumeClaim
 

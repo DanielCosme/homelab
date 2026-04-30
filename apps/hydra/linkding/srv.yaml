@@ -4,7 +4,7 @@ metadata:
   labels:
     app: linking
   name: linking
-  namespace: linking
+  namespace: linkding
 spec:
   ports:
   - nodePort: 30010
