@@ -316,6 +316,7 @@ func nodeCSI() apps.DaemonSet {
 		HostNetwork:        true,
 		HostPID:            true,
 		HostIPC:            true,
+		DNSPolicy:          core.DNSClusterFirstWithHostNet,
 		PriorityClassName:  "system-node-critical",
 		Tolerations: []core.Toleration{{
 			Operator: core.TolerationOpExists,

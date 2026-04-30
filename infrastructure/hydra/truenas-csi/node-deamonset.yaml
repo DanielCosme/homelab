@@ -127,6 +127,7 @@ spec:
         volumeMounts:
         - mountPath: /csi
           name: plugin-dir
+      dnsPolicy: ClusterFirstWithHostNet
       hostIPC: true
       hostNetwork: true
       hostPID: true
