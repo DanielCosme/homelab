@@ -17,7 +17,7 @@ type Public struct {
 type Postgres struct{}
 
 var Linkding = Service{
-	Name:              "linkding",
+	Name:              "linking",
 	Image:             "sissbruecker/linkding:1.45.0",
 	Port:              9090,
 	SecurityContextID: 33, // www-data user, group and FS ID

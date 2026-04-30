@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: linkding
-  name: linkding
-  namespace: linkding
+    app: linking
+  name: linking
+  namespace: linking
 spec:
   selector:
     matchLabels:
-      app: linkding
+      app: linking
   strategy: {}
   template:
     metadata:
       labels:
-        app: linkding
+        app: linking
     spec:
       containers:
       - env:
@@ -23,14 +23,14 @@ spec:
           valueFrom:
             secretKeyRef:
               key: supe_user_name
-              name: linkding
+              name: linking
         - name: LD_SUPERUSER_PASSWORD
           valueFrom:
             secretKeyRef:
               key: supe_user_password
-              name: linkding
+              name: linking
         image: sissbruecker/linkding:1.45.0
-        name: linkding
+        name: linking
         ports:
         - containerPort: 9090
         resources: {}
@@ -46,5 +46,5 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: linkding-pvc
+          claimName: linking-pvc
 status: {}
