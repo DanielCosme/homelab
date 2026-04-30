@@ -5,15 +5,15 @@ metadata:
   namespace: truenas-csi
 resources:
 - node-binding.yaml
-- nfs-storage-class.yaml
+- node-deamonset.yaml
 - iscsi-storage-class.yaml
 - controller-deployment.yaml
-- controller-binding.yaml
-- node-deamonset.yaml
-- CSIDriver.yaml
-- config.yaml
-- namespace.yaml
 - controller-service-account.yaml
 - controller-cluster-role.yaml
-- node-service-account.yaml
+- controller-binding.yaml
 - node-cluster-role.yaml
+- CSIDriver.yaml
+- config.yaml
+- nfs-storage-class.yaml
+- namespace.yaml
+- node-service-account.yaml

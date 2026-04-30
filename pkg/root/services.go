@@ -1,5 +1,9 @@
 package root
 
+import (
+	"danicos.dev/daniel/go-kube/pkg/kube"
+)
+
 type Service struct {
 	Name              string
 	Image             string
@@ -34,9 +38,10 @@ var Immich = Service{
 }
 
 var (
-	Longhorn      = "longhorn"
-	Monitoring    = "monitoring"
-	CloudNativePG = "cnpg"
+	Longhorn           = "longhorn"
+	Monitoring         = "monitoring"
+	CloudNativePG      = "cnpg"
+	PGClusterNamespace = kube.Namespace(CloudNativePG + "-cluster")
 )
 
 var (

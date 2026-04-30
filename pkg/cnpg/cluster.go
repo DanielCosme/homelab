@@ -2,7 +2,6 @@ package cnpg
 
 import (
 	"danicos.dev/daniel/go-kube/pkg/kube"
-	"danicos.dev/daniel/homelab/pkg/immich"
 	"danicos.dev/daniel/homelab/pkg/root"
 
 	kube_cnpg "danicos.dev/daniel/go-kube/pkg/cnpg"
@@ -10,8 +9,9 @@ import (
 	core "k8s.io/api/core/v1"
 )
 
+var cluster_meta = kube.NewMetadata(root.CloudNativePG+"-cluster", root.PGClusterNamespace)
+
 func Cluster() pg.Cluster {
-	meta := kube.NewMetadata(root.CloudNativePG+"-cluster", PGClusterNamespace)
 	spec := pg.ClusterSpec{
 		Instances: 3,
 		StorageConfiguration: pg.StorageConfiguration{
@@ -28,17 +28,11 @@ func Cluster() pg.Cluster {
 					Name:  root.Immich.Name,
 					Login: true,
 					PasswordSecret: &pg.LocalObjectReference{
-						Name: immich.Secret.Name,
+						Name: ImmichPGSecret.Name,
 					},
 				},
 			},
 		},
 	}
-	return kube_cnpg.NewCluster(meta, spec)
+	return kube_cnpg.NewCluster(cluster_meta, spec)
 }
-
-/*
- PG expects username, password
-
- PG Secret
-*/

@@ -16,7 +16,7 @@ func HelmSource() source.HelmRepository {
 		Interval: durHour(root.FLUX_HELM_MONITORING_INTERVAL),
 		URL:      root.HELM_CLOUD_NATIVE_PG_URL,
 	}
-	return flux.NewFluxHelmRepositorySource(meta, spec)
+	return flux.NewFluxHelmRepositorySource(meta_system, spec)
 }
 
 func HelmRelease() helm.HelmRelease {
@@ -30,15 +30,15 @@ func HelmRelease() helm.HelmRelease {
 				Interval: &interval,
 				SourceRef: helm.CrossNamespaceObjectReference{
 					Kind:      flux.MetaHelmRepository.Kind,
-					Name:      meta.Meta().Name,
-					Namespace: Namespace.Name,
+					Name:      meta_system.Meta().Name,
+					Namespace: SystemNamespace.Name,
 				},
 			},
 		},
 		Install: &helm.Install{CRDs: helm.Create},
 		Upgrade: &helm.Upgrade{CRDs: helm.CreateReplace},
 	}
-	return flux.NewFluxHelmRelease(meta, spec)
+	return flux.NewFluxHelmRelease(meta_system, spec)
 }
 
 func durHour(d int64) metav1.Duration {

@@ -7,16 +7,6 @@ import (
 	core "k8s.io/api/core/v1"
 )
 
-var Secret = struct {
-	Name           string
-	DB_UserKey     string
-	DB_PasswordKey string
-}{
-	Name:           root.Immich.Name,
-	DB_UserKey:     "db_username",
-	DB_PasswordKey: "db_password",
-}
-
 var meta kube.Metadata
 var Namespace = kube.Namespace(root.Immich.Name)
 var srv core.Service

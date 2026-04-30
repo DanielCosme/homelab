@@ -6,21 +6,21 @@ import (
 	"danicos.dev/daniel/homelab/pkg/root"
 )
 
-var meta kube.Metadata
-var Namespace = kube.Namespace(root.CloudNativePG + "-system")
-var PGClusterNamespace = kube.Namespace(root.CloudNativePG + "-cluster")
+var meta_system kube.Metadata
+var SystemNamespace = kube.Namespace(root.CloudNativePG + "-system")
 
 func init() {
-	meta = kube.NewMetadata(root.CloudNativePG, Namespace)
+	meta_system = kube.NewMetadata(root.CloudNativePG, SystemNamespace)
 }
 
 func Stack() stack.Stack {
 	s := stack.NewStack("cloud-native-pg", map[string]any{
-		"namespace":              Namespace,
-		"cluster-namespace":      PGClusterNamespace,
+		"namespace":              SystemNamespace,
+		"cluster-namespace":      root.PGClusterNamespace,
 		"helm-repository-source": HelmSource(),
 		"helm-release":           HelmRelease(),
 		"pg-cluster":             Cluster(),
+		"immich-db":              ImmichDatabase(),
 	})
 	return s
 }
