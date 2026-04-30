@@ -8,7 +8,8 @@ spec:
   instances: 3
   managed:
     roles:
-    - name: immich
+    - login: true
+      name: immich
       passwordSecret:
         name: immich
   postgresql:

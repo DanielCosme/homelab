@@ -25,7 +25,8 @@ func Cluster() pg.Cluster {
 		Managed: &pg.ManagedConfiguration{
 			Roles: []pg.RoleConfiguration{
 				{
-					Name: root.Immich.Name,
+					Name:  root.Immich.Name,
+					Login: true,
 					PasswordSecret: &pg.LocalObjectReference{
 						Name: immich.Secret.Name,
 					},
