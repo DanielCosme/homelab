@@ -17,8 +17,14 @@ var Linkding = Service{
 }
 
 var (
-	Longhorn    = "longhorn"
-	Monitoring  = "monitoring"
-	TrueNAS_CSI = "truenas-csi"
-	TrueNASURL  = "apex-truenas.orca-uaru.ts.net"
+	Longhorn   = "longhorn"
+	Monitoring = "monitoring"
+)
+
+var (
+	TrueNAS_CSI               = "truenas-csi"
+	TrueNASURL                = "apex-truenas.orca-uaru.ts.net"
+	TrueNASProvisioner        = "cis.truenas.io"
+	TrueNASSTorageClassNFS    = "truenas-nfs"
+	TrueNASSTorageClass_iSCSI = "truenas-iscsi"
 )

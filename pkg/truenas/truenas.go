@@ -83,8 +83,10 @@ func Stack() stack.Stack {
 			"node-cluster-role":          nodeRole,
 			"node-binding":               kube.ClusterRoleBinding(nodeRole.Name+"-binding", nodeSA, nodeRole),
 			"node-deamonset":             nodeCSI(),
-			"CSIDriver":                  CSIDriver("csi.truenas.io"),
+			"CSIDriver":                  CSIDriver(root.TrueNASProvisioner),
 			"config":                     config,
+			"nfs-storage-class":          NFSStorageClass,
+			"iscsi-storage-class":        iSCSIStorageClass,
 		},
 	)
 	return kz.Stack(root.TrueNAS_CSI)
