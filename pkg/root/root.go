@@ -32,7 +32,7 @@ const (
 	HELM_LONGHORN_CHART                = "longhorn"
 	HELM_LONGHORN_CHART_VERSION        = "1.11.1"
 	HELM_CLOUD_NATIVE_PG_URL           = "https://cloudnative-pg.github.io/charts"
-	HELM_CLOUD_NATIVE_PG_CHART         = "cnpg/cloudnative-pg"
+	HELM_CLOUD_NATIVE_PG_CHART         = "cloudnative-pg"
 	HELM_CLOUD_NATIVE_PG_CHART_VERSION = "1.29.0"
 )
 

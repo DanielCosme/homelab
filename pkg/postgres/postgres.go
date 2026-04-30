@@ -42,8 +42,8 @@ func HelmRelease() helm.HelmRelease {
 		Interval: durMin(30),
 		Chart: &helm.HelmChartTemplate{
 			Spec: helm.HelmChartTemplateSpec{
-				Chart: root.HELM_CLOUD_NATIVE_PG_CHART,
-				// Version:  root.HELM_CLOUD_NATIVE_PG_CHART_VERSION,
+				Chart:    root.HELM_CLOUD_NATIVE_PG_CHART,
+				Version:  root.HELM_CLOUD_NATIVE_PG_CHART_VERSION,
 				Interval: &interval,
 				SourceRef: helm.CrossNamespaceObjectReference{
 					Kind:      flux.MetaHelmRepository.Kind,

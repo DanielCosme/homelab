@@ -4,7 +4,7 @@ metadata:
   name: linking
   namespace: linkding
 resources:
+- namespace.yaml
 - srv.yaml
 - pvc.yaml
 - deployment.yaml
-- namespace.yaml
