@@ -35,12 +35,8 @@ func HelmRelease() helm.HelmRelease {
 				},
 			},
 		},
-		Install: &helm.Install{
-			CRDs: helm.Create,
-		},
-		Upgrade: &helm.Upgrade{
-			CRDs: helm.CreateReplace,
-		},
+		Install: &helm.Install{CRDs: helm.Create},
+		Upgrade: &helm.Upgrade{CRDs: helm.CreateReplace},
 	}
 	return flux.NewFluxHelmRelease(meta, spec)
 }

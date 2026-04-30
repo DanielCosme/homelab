@@ -28,6 +28,8 @@ func Stack() stack.Stack {
 }
 
 func Cluster() pg.Cluster {
+	namespace := kube.Namespace(root.CloudNativePG + "-cluster")
+	meta = kube.NewMetadata(root.CloudNativePG+"-cluster", namespace)
 	spec := pg.ClusterSpec{
 		Instances: 3,
 		StorageConfiguration: pg.StorageConfiguration{
@@ -39,5 +41,5 @@ func Cluster() pg.Cluster {
 			},
 		},
 	}
-	return kube_cnpg.NewCluster(root.CloudNativePG+"-cluster", spec)
+	return kube_cnpg.NewCluster(meta, spec)
 }
