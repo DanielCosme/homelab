@@ -12,6 +12,7 @@ import (
 
 var meta kube.Metadata
 var Namespace = kube.Namespace(root.CloudNativePG + "-system")
+var PGClusterNamespace = kube.Namespace(root.CloudNativePG + "-cluster")
 
 func init() {
 	meta = kube.NewMetadata(root.CloudNativePG, Namespace)
@@ -20,6 +21,7 @@ func init() {
 func Stack() stack.Stack {
 	s := stack.NewStack("cloud-native-pg", map[string]any{
 		"namespace":              Namespace,
+		"cluster-namespace":      PGClusterNamespace,
 		"helm-repository-source": HelmSource(),
 		"helm-release":           HelmRelease(),
 		"pg-cluster":             Cluster(),
@@ -28,8 +30,7 @@ func Stack() stack.Stack {
 }
 
 func Cluster() pg.Cluster {
-	namespace := kube.Namespace(root.CloudNativePG + "-cluster")
-	meta = kube.NewMetadata(root.CloudNativePG+"-cluster", namespace)
+	meta := kube.NewMetadata(root.CloudNativePG+"-cluster", PGClusterNamespace)
 	spec := pg.ClusterSpec{
 		Instances: 3,
 		StorageConfiguration: pg.StorageConfiguration{
