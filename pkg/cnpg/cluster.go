@@ -38,7 +38,7 @@ func Cluster() pg.Cluster {
 }
 
 /*
- Need a role and secret
- - Username
- - Password
+ PG expects username, password
+
+ PG Secret
 */
