@@ -5,11 +5,11 @@ import (
 	"os"
 
 	"danicos.dev/daniel/go-kube/pkg/stack"
+	"danicos.dev/daniel/homelab/pkg/cnpg"
 	"danicos.dev/daniel/homelab/pkg/flux"
 	"danicos.dev/daniel/homelab/pkg/linkding"
 	"danicos.dev/daniel/homelab/pkg/longhorn"
 	"danicos.dev/daniel/homelab/pkg/monitoring"
-	"danicos.dev/daniel/homelab/pkg/postgres"
 	"danicos.dev/daniel/homelab/pkg/root"
 	"danicos.dev/daniel/homelab/pkg/truenas"
 	/*
@@ -27,7 +27,7 @@ func main() {
 		"monitoring":      monitoring.Stack(),
 		"longhorn":        longhorn.Stack(),
 		"truenas-csi":     truenas.Stack(),
-		"cloud-native-pg": postgres.Stack(),
+		"cloud-native-pg": cnpg.Stack(),
 	}
 	for name, s := range hydra_infrastructure {
 		fmt.Printf("STACK: %s\n", name)

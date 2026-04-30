@@ -1,0 +1,25 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cnpg-cluster
+spec:
+  affinity: {}
+  instances: 3
+  postgresql:
+    syncReplicaElectionConstraint:
+      enabled: false
+  resources: {}
+  storage:
+    pvcTemplate:
+      resources: {}
+      storageClassName: local-path
+    resizeInUseVolumes: true
+    size: 10Gi
+    storageClass: local-path
+status:
+  certificates: {}
+  configMapResourceVersion: {}
+  managedRolesStatus: {}
+  secretsResourceVersion: {}
+  switchReplicaClusterStatus: {}
+  topology: {}

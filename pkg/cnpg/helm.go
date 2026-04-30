@@ -1,32 +1,15 @@
-package postgres
+package cnpg
 
 import (
 	"time"
 
 	"danicos.dev/daniel/go-kube/pkg/flux"
-	"danicos.dev/daniel/go-kube/pkg/kube"
-	"danicos.dev/daniel/go-kube/pkg/stack"
 	"danicos.dev/daniel/homelab/pkg/root"
+
 	helm "github.com/fluxcd/helm-controller/api/v2"
 	source "github.com/fluxcd/source-controller/api/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
-
-var meta kube.Metadata
-var Namespace = kube.Namespace(root.CloudNativePG + "-system")
-
-func init() {
-	meta = kube.NewMetadata(root.CloudNativePG, Namespace)
-}
-
-func Stack() stack.Stack {
-	s := stack.NewStack("cloud-native-pg", map[string]any{
-		"namespace":              Namespace,
-		"helm-repository-source": HelmSource(),
-		"helm-release":           HelmRelease(),
-	})
-	return s
-}
 
 func HelmSource() source.HelmRepository {
 	spec := source.HelmRepositorySpec{

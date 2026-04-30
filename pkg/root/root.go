@@ -15,6 +15,10 @@ const (
 )
 
 const (
+	KUBE_LOCAL_STORAGE_CLASS = "local-path"
+)
+
+const (
 	FLUX_NAMESPACE                = "flux-system"
 	FLUX_APPS_HYDRA_PATH          = "./apps/" + HYDRA_CLUSTER
 	FLUX_APPS_SECRETS_HYDRA_PATH  = "./apps/" + HYDRA_CLUSTER + "/secrets"
