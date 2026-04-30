@@ -17,8 +17,9 @@ var Linkding = Service{
 }
 
 var (
-	Longhorn   = "longhorn"
-	Monitoring = "monitoring"
+	Longhorn      = "longhorn"
+	Monitoring    = "monitoring"
+	CloudNativePG = "cnpg"
 )
 
 var (

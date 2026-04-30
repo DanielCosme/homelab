@@ -9,6 +9,7 @@ import (
 	"danicos.dev/daniel/homelab/pkg/linkding"
 	"danicos.dev/daniel/homelab/pkg/longhorn"
 	"danicos.dev/daniel/homelab/pkg/monitoring"
+	"danicos.dev/daniel/homelab/pkg/postgres"
 	"danicos.dev/daniel/homelab/pkg/root"
 	"danicos.dev/daniel/homelab/pkg/truenas"
 	/*
@@ -23,9 +24,10 @@ func main() {
 	assertNoErr(err)
 
 	hydra_infrastructure := map[string]stack.Stack{
-		"monitoring":  monitoring.Stack(),
-		"longhorn":    longhorn.Stack(),
-		"truenas-csi": truenas.Stack(),
+		"monitoring":      monitoring.Stack(),
+		"longhorn":        longhorn.Stack(),
+		"truenas-csi":     truenas.Stack(),
+		"cloud-native-pg": postgres.Stack(),
 	}
 	for name, s := range hydra_infrastructure {
 		fmt.Printf("STACK: %s\n", name)
