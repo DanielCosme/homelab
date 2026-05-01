@@ -4,3 +4,4 @@ resources:
   - coredns-config.yaml
   - truenas-csi/
   - truenas-csi-driver.yaml
+  - monitoring/

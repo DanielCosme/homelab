@@ -83,3 +83,15 @@ func Enc_Dec(opt string) error {
 	t := target.NewA("./scripts/enc_dec_go.sh", opt)
 	return r.RunV("Enc or Dec Go secrets", t)
 }
+
+// Reconcile flux
+func Flux_reconcile() error {
+	t := target.NewA("flux", "--kubeconfig", "/home/daniel/.kube/hydra", "reconcile", "source", "git", "flux-system")
+	return r.RunV("Reconcile flux", t)
+}
+
+// Gets flux status
+func Flux_get() error {
+	t := target.NewA("flux", "--kubeconfig", "/home/daniel/.kube/hydra", "get", "kustomizations")
+	return r.RunV("Get flux", t)
+}
