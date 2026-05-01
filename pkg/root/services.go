@@ -52,7 +52,7 @@ var (
 var (
 	TrueNAS_CSI               = "truenas-csi"
 	TrueNASURL                = "apex-truenas.orca-uaru.ts.net"
-	TrueNASProvisioner        = "cis.truenas.io"
+	TrueNASProvisioner        = "csi.truenas.io"
 	TrueNASSTorageClassNFS    = "truenas-nfs"
 	TrueNASSTorageClass_iSCSI = "truenas-iscsi"
 )

@@ -4,6 +4,6 @@ metadata:
   name: immich
   namespace: immich
 resources:
+- deployment.yaml
 - namespace.yaml
 - uploads-pvc.yaml
-- deployment.yaml

@@ -81,11 +81,11 @@ func Stack() stack.Stack {
 			// "node-service-account":       nodeSA,
 			// "node-cluster-role":          nodeRole,
 			// "node-binding":               kube.ClusterRoleBinding(nodeRole.Name+"-binding", nodeSA, nodeRole),
-			// "node-deamonset":             nodeCSI(),
+			// "node-deamonset": nodeCSI(),
 			// "CSIDriver":                  CSIDriver(root.TrueNASProvisioner),
-			"config": config,
-			// "nfs-storage-class":   NFSStorageClass,
-			// "iscsi-storage-class": iSCSIStorageClass,
+			"config":              config,
+			"nfs-storage-class":   NFSStorageClass,
+			"iscsi-storage-class": iSCSIStorageClass,
 		},
 	)
 	return kz.Stack(root.TrueNAS_CSI)
