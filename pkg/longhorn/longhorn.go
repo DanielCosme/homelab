@@ -20,12 +20,15 @@ func init() {
 }
 
 func Stack() stack.Stack {
-	s := stack.NewStack("longhorn", map[string]any{
-		"namespace":      Namespace,
-		"longhorn-stack": LonghornHelmSource(),
-		"release":        LonghornHelmRelease(),
-	})
-	return s
+	kz := kube.NewKuztomizedStack(
+		meta,
+		map[string]any{
+			"namespace":      Namespace,
+			"longhorn-stack": LonghornHelmSource(),
+			"release":        LonghornHelmRelease(),
+		},
+	)
+	return kz.Stack("longhorn")
 }
 
 func LonghornHelmSource() source.HelmRepository {

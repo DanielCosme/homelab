@@ -5,3 +5,4 @@ resources:
   - truenas-csi/
   - truenas-csi-driver.yaml
   - monitoring/
+  - longhorn/
