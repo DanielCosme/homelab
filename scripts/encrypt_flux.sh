@@ -18,7 +18,7 @@ for FILE in $SECRETS_FOLDER/*; do
 	FILENAME="${FILE##*/}"
 	DEST=$SECRETS_ENC_PATH/$FILENAME
 
-	if [ "$FILENAME" = "kuztomization.yaml" ]; then
+	if [ "$FILENAME" = "kustomization.yaml" ]; then
 		mv $FILE $DEST
 		echo "Moving UNENCRYPTED $FILE"
 		continue
