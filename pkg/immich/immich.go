@@ -6,6 +6,7 @@ import (
 	"danicos.dev/daniel/homelab/pkg/root"
 	apps "k8s.io/api/apps/v1"
 	core "k8s.io/api/core/v1"
+	"k8s.io/apimachinery/pkg/api/resource"
 )
 
 var Secret = struct {
@@ -35,6 +36,10 @@ func init() {
 	uploads_pvc = meta.PVC()
 	uploads_pvc.Spec.StorageClassName = new(root.TrueNASSTorageClassNFS)
 	uploads_pvc.Spec.AccessModes = []core.PersistentVolumeAccessMode{core.ReadWriteMany}
+	req := kube.StorageRequest(resource.MustParse("200Gi"))
+	uploads_pvc.Spec.Resources = core.VolumeResourceRequirements{
+		Requests: req,
+	}
 }
 
 func Stack() stack.Stack {
