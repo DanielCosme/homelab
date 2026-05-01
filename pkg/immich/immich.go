@@ -26,17 +26,21 @@ var Secret = struct {
 var meta kube.Metadata
 var Namespace = kube.Namespace(root.Immich.Name)
 var srv core.Service
-var pvc core.PersistentVolumeClaim
+var uploads_pvc core.PersistentVolumeClaim
 
 func init() {
 	meta = kube.NewMetadata(root.Immich.Name, Namespace)
+	uploads_pvc = meta.PVC()
+	uploads_pvc.Spec.StorageClassName = new(root.TrueNASSTorageClassNFS)
+	uploads_pvc.Spec.AccessModes = []core.PersistentVolumeAccessMode{core.ReadWriteMany}
 }
 
 func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
 		meta,
 		map[string]any{
-			"namespace": Namespace,
+			"namespace":   Namespace,
+			"uploads-pvc": uploads_pvc,
 		},
 	)
 	return kz.Stack("immich")
