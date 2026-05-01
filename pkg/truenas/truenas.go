@@ -18,7 +18,7 @@ var Secret = struct {
 	Name   string
 	APIKey string
 }{
-	Name:   root.TrueNAS_CSI + "-api-credentials",
+	Name:   "truenas-api-credentials",
 	APIKey: "api-key",
 }
 
@@ -54,9 +54,10 @@ func init() {
 	nodeSA = kube.ServiceAccount(root.TrueNAS_CSI+"-node", Namespace)
 	split := strings.Split(root.TrueNASURL, ".")
 	slices.Reverse(split)
+	config_meta := kube.NewMetadata("truenas-csi-config", Namespace)
 	config = core.ConfigMap{
 		TypeMeta:   kube.ConfigMapMeta,
-		ObjectMeta: meta.Meta(),
+		ObjectMeta: config_meta.Meta(),
 		Data: map[string]string{
 			Config.TruenasURL:      fmt.Sprintf("wss://%s/api/current", root.TrueNASURL),
 			Config.TrueNASInsecure: "true",
@@ -69,24 +70,22 @@ func init() {
 }
 
 func Stack() stack.Stack {
-	controllerRole := controllerClusterRole()
-	nodeRole := nodeClusterRole()
 	kz := kube.NewKuztomizedStack(
 		meta,
 		map[string]any{
-			"namespace":                  Namespace,
-			"controller-deployment":      controllerDeployment(),
-			"controller-service-account": controllerSA,
-			"controller-cluster-role":    controllerRole,
-			"controller-binding":         kube.ClusterRoleBinding(controllerRole.Name+"-binding", controllerSA, controllerRole),
-			"node-service-account":       nodeSA,
-			"node-cluster-role":          nodeRole,
-			"node-binding":               kube.ClusterRoleBinding(nodeRole.Name+"-binding", nodeSA, nodeRole),
-			"node-deamonset":             nodeCSI(),
-			"CSIDriver":                  CSIDriver(root.TrueNASProvisioner),
-			"config":                     config,
-			"nfs-storage-class":          NFSStorageClass,
-			"iscsi-storage-class":        iSCSIStorageClass,
+			"namespace": Namespace,
+			// "controller-deployment":      controllerDeployment(),
+			// "controller-service-account": controllerSA,
+			// "controller-cluster-role":    controllerRole,
+			// "controller-binding":         kube.ClusterRoleBinding(controllerRole.Name+"-binding", controllerSA, controllerRole),
+			// "node-service-account":       nodeSA,
+			// "node-cluster-role":          nodeRole,
+			// "node-binding":               kube.ClusterRoleBinding(nodeRole.Name+"-binding", nodeSA, nodeRole),
+			// "node-deamonset":             nodeCSI(),
+			// "CSIDriver":                  CSIDriver(root.TrueNASProvisioner),
+			"config": config,
+			// "nfs-storage-class":   NFSStorageClass,
+			// "iscsi-storage-class": iSCSIStorageClass,
 		},
 	)
 	return kz.Stack(root.TrueNAS_CSI)
