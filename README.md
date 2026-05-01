@@ -1,5 +1,20 @@
-## Homelab
+# Homelab
 
+## Steps to Bootstrap From scratch
+1. Install k3s in all nodes (out of the scope of this document)
+	- To install the server run `mage installk3s`
+	- To install worker nodes run `mage installk3s_worker`, you will get the node token.
+	- Run inside of all nodes that are going to be workers:
+	```sh
+	curl -sfL https://get.k3s.io | K3S_URL=https://hydra-0:6443 K3S_TOKEN=<node_token> sh -s -
+	```
+2. Import Kubeconfig with `./scripts/get_kubeconfig.sh`
+3. Bootstrap Flux
+	-  Run: 
+```sh
+flux --kubeconfig ~/.kube/hydra bootstrap gitea --token-auth --hostname=danicos.dev --owner=daniel --repository=homelab --private=false --branch=main --personal=true --path=./clusters/hydra
+```
+	- Run `./scripts/create_flux_secret.sh` to allow for SOPS Decription
 
 ## GitOps
 A set of "best practices" where the entire code delivery process is controlled via Git, including infrastructure and application definition as code and automation to complete updates and rollbacks.
