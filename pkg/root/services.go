@@ -35,7 +35,8 @@ var Linkding = Service{
 
 var Immich = Service{
 	Name:  "immich",
-	Image: "",
+	Image: "ghcr.io/immich-app/immich-server:v2.6.0:-release}",
+	Port:  2283,
 	// PublicURL: "https://photos.danicos.me",
 }
 
