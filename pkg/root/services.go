@@ -1,6 +1,8 @@
 package root
 
 import (
+	"fmt"
+
 	"danicos.dev/daniel/go-kube/pkg/kube"
 )
 
@@ -38,10 +40,12 @@ var Immich = Service{
 }
 
 var (
-	Longhorn           = "longhorn"
-	Monitoring         = "monitoring"
-	CloudNativePG      = "cnpg"
-	PGClusterNamespace = kube.Namespace(CloudNativePG + "-cluster")
+	Longhorn            = "longhorn"
+	Monitoring          = "monitoring"
+	CloudNativePG       = "cnpg"
+	PGClusterNamespace  = kube.Namespace(CloudNativePG + "-cluster")
+	PG_CLUSTER_HOSTNAME = fmt.Sprintf("%s-rw.%s.svc.cluster.local", PGClusterNamespace.Name, PGClusterNamespace.Name)
+	PG_CLUSTER_PORT     = 5432
 )
 
 var (
