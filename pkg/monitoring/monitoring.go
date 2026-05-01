@@ -23,13 +23,15 @@ func init() {
 }
 
 func Stack() stack.Stack {
-	s := stack.NewStack("monitoring", map[string]any{
-		"namespace":             Namespace,
-		"kube-prometheus-stack": PrometheusHelmSource(),
-		"release":               PrometheusRelease(),
-	})
-
-	return s
+	kz := kube.NewKuztomizedStack(
+		meta,
+		map[string]any{
+			"namespace":             Namespace,
+			"kube-prometheus-stack": PrometheusHelmSource(),
+			"release":               PrometheusRelease(),
+		},
+	)
+	return kz.Stack("monitoring")
 }
 
 func PrometheusHelmSource() source.HelmRepository {
