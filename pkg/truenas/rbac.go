@@ -25,6 +25,7 @@ func controllerClusterRole() rbac.ClusterRole {
 		kube.PolicyRule(kube.APIGroupSnapshot, kube.ResourceVolumeSnapshotContents, kube.VerbsAll()),
 		kube.PolicyRule(kube.APIGroupSnapshot, kube.ResourceVolumeSnapshotContentsStatus, kube.VerbsMutate()),
 		kube.PolicyRule(kube.APIGroupSnapshot, kube.ResourceVolumeSnapshotClases, kube.VerbsRead()),
+		kube.PolicyRule(kube.APIGroupCoordination, kube.ResourceLeases, kube.VerbsAll()),
 	}
 	return kube.ClusterRole(root.TrueNAS_CSI+"-controller-role", rules)
 }
