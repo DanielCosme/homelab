@@ -8,6 +8,6 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-      storage: 200Gi
+      storage: 20Gi
   storageClassName: truenas-nfs
 status: {}

@@ -36,7 +36,7 @@ func init() {
 	uploads_pvc = meta.PVC()
 	uploads_pvc.Spec.StorageClassName = new(root.TrueNASSTorageClassNFS)
 	uploads_pvc.Spec.AccessModes = []core.PersistentVolumeAccessMode{core.ReadWriteMany}
-	req := kube.StorageRequest(resource.MustParse("200Gi"))
+	req := kube.StorageRequest(resource.MustParse("20Gi"))
 	uploads_pvc.Spec.Resources = core.VolumeResourceRequirements{
 		Requests: req,
 	}
