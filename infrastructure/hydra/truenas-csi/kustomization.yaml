@@ -4,7 +4,7 @@ metadata:
   name: truenas-csi
   namespace: truenas-csi
 resources:
+- config.yaml
 - nfs-storage-class.yaml
 - iscsi-storage-class.yaml
 - namespace.yaml
-- config.yaml
