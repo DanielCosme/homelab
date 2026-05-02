@@ -18,11 +18,8 @@ func Stack() stack.Stack {
 		meta_system,
 		map[string]any{
 			"namespace":              SystemNamespace,
-			"cluster-namespace":      root.PGClusterNamespace,
 			"helm-repository-source": HelmSource(),
 			"helm-release":           HelmRelease(),
-			"pg-cluster":             Cluster(),
-			"immich-db":              ImmichDatabase(),
 		},
 	)
 	return kz.Stack("cloud-native-pg")

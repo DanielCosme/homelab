@@ -5,8 +5,5 @@ metadata:
   namespace: cnpg-system
 resources:
 - namespace.yaml
-- cluster-namespace.yaml
 - helm-repository-source.yaml
 - helm-release.yaml
-- pg-cluster.yaml
-- immich-db.yaml
