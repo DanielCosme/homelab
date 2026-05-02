@@ -49,7 +49,7 @@ func Stack() stack.Stack {
 			"namespace":   Namespace,
 			"uploads-pvc": uploads_pvc,
 			// "redis":       Redis(),
-			"deployment": Deployment(),
+			// "deployment": Deployment(),
 		},
 	)
 	return kz.Stack("immich")
