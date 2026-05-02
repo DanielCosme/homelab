@@ -7,3 +7,4 @@ resources:
   - monitoring/
   - longhorn/
   - cloud-native-pg/
+  - postgres/
