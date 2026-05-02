@@ -6,4 +6,4 @@ resources:
   - truenas-csi-driver.yaml
   - monitoring/
   - longhorn/
-  - cloud-native-pg/
+  # - cloud-native-pg/
