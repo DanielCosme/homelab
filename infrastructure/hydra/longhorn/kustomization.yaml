@@ -4,6 +4,6 @@ metadata:
   name: longhorn
   namespace: longhorn-system
 resources:
-- release.yaml
-- namespace.yaml
 - longhorn-stack.yaml
+- namespace.yaml
+- release.yaml

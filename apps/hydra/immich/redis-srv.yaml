@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: redis
+  name: redis
+  namespace: immich
+spec:
+  ports:
+  - port: 6379
+    targetPort: 0
+  selector:
+    app: redis
+status:
+  loadBalancer: {}

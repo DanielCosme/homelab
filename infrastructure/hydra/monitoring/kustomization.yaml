@@ -4,6 +4,6 @@ metadata:
   name: monitoring
   namespace: monitoring
 resources:
-- namespace.yaml
 - kube-prometheus-stack.yaml
+- namespace.yaml
 - release.yaml

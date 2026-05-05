@@ -25,10 +25,14 @@ var Secret = struct {
 	DBPortKey:     "db_port",
 }
 
+const RedisPort = 6379
+
 var meta kube.Metadata
 var Namespace = kube.Namespace(root.Immich.Name)
 var srv core.Service
 var uploads_pvc core.PersistentVolumeClaim
+var redis_meta kube.Metadata
+var redis_srv core.Service
 
 func init() {
 	meta = kube.NewMetadata(root.Immich.Name, Namespace)
@@ -40,6 +44,9 @@ func init() {
 	uploads_pvc.Spec.Resources = core.VolumeResourceRequirements{
 		Requests: req,
 	}
+
+	redis_meta = kube.NewMetadata("redis", Namespace)
+	redis_srv = redis_meta.Service(RedisPort)
 }
 
 func Stack() stack.Stack {
@@ -48,7 +55,8 @@ func Stack() stack.Stack {
 		map[string]any{
 			"namespace":   Namespace,
 			"uploads-pvc": uploads_pvc,
-			// "redis":       Redis(),
+			"redis-srv":   redis_srv,
+			"redis":       Redis(),
 			// "deployment": Deployment(),
 		},
 	)
@@ -57,6 +65,15 @@ func Stack() stack.Stack {
 
 func Deployment() apps.Deployment {
 	uploadVol := kube.NewVolumeFrom(kube.VolumeSourcePVC, "upload", uploads_pvc.Name)
+	localtimeVol := core.Volume{
+		Name: "localtime",
+		VolumeSource: core.VolumeSource{
+			HostPath: &core.HostPathVolumeSource{
+				Path: "/etc/localtime",
+				Type: new(core.HostPathFile),
+			},
+		},
+	}
 	envMapping := map[string]string{}
 	secretMapping := map[string]string{
 		"DB_HOSTNAME":      Secret.DBHostKey,
@@ -75,15 +92,21 @@ func Deployment() apps.Deployment {
 			},
 		},
 		Volumes: []core.Volume{
-			// /etc/localtime
 			uploadVol,
+			localtimeVol,
 		},
 	}
 	return kube.NewDeployment(meta, podSpec)
 }
 
 func Redis() apps.Deployment {
-	meta := kube.NewMetadata(root.Immich.Name+"-redis", Namespace)
-	podSpec := core.PodSpec{}
-	return kube.NewDeployment(meta, podSpec)
+	podSpec := core.PodSpec{
+		Containers: []core.Container{
+			{
+				Name:  "immich_redis",
+				Image: "docker.io/valkey/valkey:9@sha256:3b55fbaa0cd93cf0d9d961f405e4dfcc70efe325e2d84da207a0a8e6d8fde4f9",
+			},
+		},
+	}
+	return kube.NewDeployment(redis_meta, podSpec)
 }

@@ -4,6 +4,6 @@ metadata:
   name: cnpg
   namespace: cnpg-system
 resources:
-- namespace.yaml
-- helm-repository-source.yaml
 - helm-release.yaml
+- helm-repository-source.yaml
+- namespace.yaml
