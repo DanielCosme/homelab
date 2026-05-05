@@ -27,6 +27,7 @@ func Stack() stack.Stack {
 func Cluster() pg.Cluster {
 	spec := pg.ClusterSpec{
 		Instances: 3,
+		ImageName: "ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.3-v0.2.1",
 		StorageConfiguration: pg.StorageConfiguration{
 			StorageClass:       new(root.KUBE_LOCAL_STORAGE_CLASS),
 			Size:               "10Gi",

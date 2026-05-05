@@ -5,6 +5,7 @@ metadata:
   namespace: cnpg-cluster
 spec:
   affinity: {}
+  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.3-v0.2.1
   instances: 3
   managed:
     roles:
