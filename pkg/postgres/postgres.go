@@ -8,15 +8,9 @@ import (
 	kube_cnpg "danicos.dev/daniel/go-kube/pkg/cnpg"
 	pg "github.com/cloudnative-pg/api/pkg/api/v1"
 	core "k8s.io/api/core/v1"
-	meta "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 var cluster_meta = kube.NewMetadata(root.CloudNativePG+"-cluster", root.PGClusterNamespace)
-var image_catalog pg.ImageCatalog
-
-func init() {
-	image_catalog = ImageCatalog()
-}
 
 func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
@@ -25,7 +19,6 @@ func Stack() stack.Stack {
 			"cluster-namespace": root.PGClusterNamespace,
 			"pg-cluster":        Cluster(),
 			"immich-db":         ImmichDatabase(),
-			"image-cataglog":    image_catalog,
 		},
 	)
 	return kz.Stack("postgres")
@@ -68,32 +61,6 @@ func Cluster() pg.Cluster {
 	return kube_cnpg.NewCluster(cluster_meta, spec)
 }
 
-func ImageCatalog() pg.ImageCatalog {
-	return pg.ImageCatalog{
-		TypeMeta: meta.TypeMeta{
-			Kind:       "ImageCatalog",
-			APIVersion: "postgresql.cnpg.io/v1",
-		},
-		ObjectMeta: kube.ObjectMeta(root.PG_VERSION_NAME, root.PGClusterNamespace.Name),
-		Spec: pg.ImageCatalogSpec{
-			Images: []pg.CatalogImage{
-				{
-					Major: root.PG_VERSION_18,
-					Image: root.PG_VERSION_18_IMAGE,
-					// Extensions: []pg.ExtensionConfiguration{
-					// 	{
-					// 		Name: "pgvector",
-					// 		ImageVolumeSource: core.ImageVolumeSource{
-					// 			Reference: "ghcr.io/cloudnative-pg/pgvector:0.8.2-18-trixie",
-					// 		},
-					// 	},
-					// },
-				},
-			},
-		},
-	}
-}
-
 var ImmichPGSecret = kube_cnpg.NewPGSecret(root.Immich.Name, root.PGClusterNamespace)
 
 func ImmichDatabase() pg.Database {
@@ -105,12 +72,12 @@ func ImmichDatabase() pg.Database {
 			Name: cluster_meta.Meta().Name,
 		},
 		Extensions: []pg.ExtensionSpec{
-			// {
-			// 	DatabaseObjectSpec: pg.DatabaseObjectSpec{
-			// 		Name:   "pgvector",
-			// 		Ensure: pg.EnsurePresent,
-			// 	},
-			// },
+			{
+				DatabaseObjectSpec: pg.DatabaseObjectSpec{
+					Name:   "pgvector",
+					Ensure: pg.EnsurePresent,
+				},
+			},
 			// {
 			// 	DatabaseObjectSpec: pg.DatabaseObjectSpec{
 			// 		Name:   "cube",

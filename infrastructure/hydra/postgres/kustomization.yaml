@@ -5,6 +5,5 @@ metadata:
   namespace: cnpg-cluster
 resources:
 - cluster-namespace.yaml
-- image-cataglog.yaml
 - immich-db.yaml
 - pg-cluster.yaml

@@ -6,6 +6,9 @@ metadata:
 spec:
   cluster:
     name: cnpg-cluster
+  extensions:
+  - ensure: present
+    name: pgvector
   name: immich
   owner: immich
 status: {}
