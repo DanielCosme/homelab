@@ -66,7 +66,7 @@ var ImmichPGSecret = kube_cnpg.NewPGSecret(root.Immich.Name, root.PGClusterNames
 func ImmichDatabase() pg.Database {
 	meta := kube.NewMetadata(root.Immich.Name+"-db", root.PGClusterNamespace)
 	spec := pg.DatabaseSpec{
-		Ensure: pg.EnsureAbsent,
+		Ensure: pg.EnsurePresent,
 		Name:   root.Immich.Name,
 		Owner:  root.Immich.Name,
 		ClusterRef: core.LocalObjectReference{

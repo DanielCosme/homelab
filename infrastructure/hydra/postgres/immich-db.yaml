@@ -6,7 +6,7 @@ metadata:
 spec:
   cluster:
     name: cnpg-cluster
-  ensure: absent
+  ensure: present
   extensions:
   - ensure: present
     name: vector
