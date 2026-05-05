@@ -103,7 +103,7 @@ func Redis() apps.Deployment {
 	podSpec := core.PodSpec{
 		Containers: []core.Container{
 			{
-				Name:  "immich_redis",
+				Name:  "redis",
 				Image: "docker.io/valkey/valkey:9@sha256:3b55fbaa0cd93cf0d9d961f405e4dfcc70efe325e2d84da207a0a8e6d8fde4f9",
 			},
 		},
