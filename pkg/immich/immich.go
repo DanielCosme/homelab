@@ -99,6 +99,17 @@ func Deployment() apps.Deployment {
 				Image: root.Immich.Image,
 				Env:   kube.NewEnvVarWithSecret(envMapping, secretMapping, Secret.Name),
 				Ports: []core.ContainerPort{{ContainerPort: root.Immich.Port}},
+				VolumeMounts: []core.VolumeMount{
+					{
+						Name:      uploadVol.Name,
+						MountPath: "/data",
+					},
+					{
+						Name:      localtimeVol.Name,
+						MountPath: "/etc/localtime",
+						ReadOnly:  true,
+					},
+				},
 			},
 		},
 		Volumes: []core.Volume{

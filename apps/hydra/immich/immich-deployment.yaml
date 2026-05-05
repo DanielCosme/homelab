@@ -51,6 +51,12 @@ spec:
         ports:
         - containerPort: 2283
         resources: {}
+        volumeMounts:
+        - mountPath: /data
+          name: upload
+        - mountPath: /etc/localtime
+          name: localtime
+          readOnly: true
       volumes:
       - name: upload
         persistentVolumeClaim:
