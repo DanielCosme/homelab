@@ -84,14 +84,14 @@ func ImageCatalog() pg.ImageCatalog {
 				{
 					Major: root.PG_VERSION_18,
 					Image: root.PG_VERSION_18_IMAGE,
-					Extensions: []pg.ExtensionConfiguration{
-						{
-							Name: "pgvector",
-							ImageVolumeSource: core.ImageVolumeSource{
-								Reference: "ghcr.io/cloudnative-pg/pgvector:0.8.2-18-trixie",
-							},
-						},
-					},
+					// Extensions: []pg.ExtensionConfiguration{
+					// 	{
+					// 		Name: "pgvector",
+					// 		ImageVolumeSource: core.ImageVolumeSource{
+					// 			Reference: "ghcr.io/cloudnative-pg/pgvector:0.8.2-18-trixie",
+					// 		},
+					// 	},
+					// },
 				},
 			},
 		},
