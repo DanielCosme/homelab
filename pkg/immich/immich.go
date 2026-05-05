@@ -1,6 +1,8 @@
 package immich
 
 import (
+	"fmt"
+
 	"danicos.dev/daniel/go-kube/pkg/kube"
 	"danicos.dev/daniel/go-kube/pkg/stack"
 	"danicos.dev/daniel/homelab/pkg/postgres"
@@ -76,7 +78,10 @@ func Deployment() apps.Deployment {
 			},
 		},
 	}
-	envMapping := map[string]string{}
+	envMapping := map[string]string{
+		"REDIS_PORT":  fmt.Sprintf("%d", RedisPort),
+		"IMMICH_PORT": fmt.Sprintf("%d", root.Immich.Port),
+	}
 	secretMapping := map[string]string{
 		"DB_HOSTNAME":      Secret.DBHostKey,
 		"DB_PORT":          Secret.DBPortKey,
