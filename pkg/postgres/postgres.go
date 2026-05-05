@@ -75,10 +75,10 @@ func Cluster() pg.Cluster {
 func ImageCatalog() pg.ImageCatalog {
 	return pg.ImageCatalog{
 		TypeMeta: meta.TypeMeta{
-			Kind:       "ClusterImageCatalog",
+			Kind:       "ImageCatalog",
 			APIVersion: "postgresql.cnpg.io/v1",
 		},
-		ObjectMeta: kube.ObjectMeta(root.PG_VERSION_NAME, ""),
+		ObjectMeta: kube.ObjectMeta(root.PG_VERSION_NAME, root.PGClusterNamespace.Name),
 		Spec: pg.ImageCatalogSpec{
 			Images: []pg.CatalogImage{
 				{

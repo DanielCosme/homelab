@@ -1,7 +1,8 @@
 apiVersion: postgresql.cnpg.io/v1
-kind: ClusterImageCatalog
+kind: ImageCatalog
 metadata:
   name: pg-minimal-trixie
+  namespace: cnpg-cluster
 spec:
   images:
   - image: ghcr.io/cloudnative-pg/postgresql:18.3-minimal-trixie

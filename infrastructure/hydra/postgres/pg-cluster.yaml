@@ -7,7 +7,7 @@ spec:
   affinity: {}
   imageCatalogRef:
     apiGroup: postgresql.cnpg.io/v1
-    kind: ClusterImageCatalog
+    kind: ImageCatalog
     major: 18
     name: pg-minimal-trixie
   instances: 3
