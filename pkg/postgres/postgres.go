@@ -18,7 +18,7 @@ func Stack() stack.Stack {
 		map[string]any{
 			"cluster-namespace": root.PGClusterNamespace,
 			"pg-cluster":        Cluster(),
-			"immich-db":         ImmichDatabase(),
+			// "immich-db":         ImmichDatabase(),
 		},
 	)
 	return kz.Stack("postgres")
