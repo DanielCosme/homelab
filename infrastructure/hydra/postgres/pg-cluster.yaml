@@ -17,7 +17,7 @@ spec:
     extensions:
     - image:
         reference: ghcr.io/cloudnative-pg/pgvector:0.8.2-18-trixie
-      name: pgvector
+      name: vector
     syncReplicaElectionConstraint:
       enabled: false
   resources: {}

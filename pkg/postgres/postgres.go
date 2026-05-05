@@ -39,7 +39,7 @@ func Cluster() pg.Cluster {
 		PostgresConfiguration: pg.PostgresConfiguration{
 			Extensions: []pg.ExtensionConfiguration{
 				{
-					Name: "pgvector",
+					Name: "vector",
 					ImageVolumeSource: core.ImageVolumeSource{
 						Reference: "ghcr.io/cloudnative-pg/pgvector:0.8.2-18-trixie",
 					},
@@ -74,7 +74,7 @@ func ImmichDatabase() pg.Database {
 		Extensions: []pg.ExtensionSpec{
 			{
 				DatabaseObjectSpec: pg.DatabaseObjectSpec{
-					Name:   "pgvector",
+					Name:   "vector",
 					Ensure: pg.EnsurePresent,
 				},
 			},
