@@ -42,7 +42,7 @@ spec:
             secretKeyRef:
               key: db_username
               name: immich-secret
-        image: ghcr.io/immich-app/immich-server:v2.6.0:-release
+        image: ghcr.io/immich-app/immich-server:v2.6.0-release
         name: immich-server
         ports:
         - containerPort: 2283
