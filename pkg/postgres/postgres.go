@@ -42,18 +42,14 @@ func Cluster() pg.Cluster {
 				StorageClassName: new(root.KUBE_LOCAL_STORAGE_CLASS),
 			},
 		},
-		ImageCatalogRef: &pg.ImageCatalogRef{
-			TypedLocalObjectReference: core.TypedLocalObjectReference{
-				APIGroup: &image_catalog.APIVersion,
-				Kind:     image_catalog.Kind,
-				Name:     image_catalog.Name,
-			},
-			Major: root.PG_VERSION_18,
-		},
+		ImageName: root.PG_VERSION_18_IMAGE,
 		PostgresConfiguration: pg.PostgresConfiguration{
 			Extensions: []pg.ExtensionConfiguration{
 				{
 					Name: "pgvector",
+					ImageVolumeSource: core.ImageVolumeSource{
+						Reference: "ghcr.io/cloudnative-pg/pgvector:0.8.2-18-trixie",
+					},
 				},
 			},
 		},

@@ -5,11 +5,7 @@ metadata:
   namespace: cnpg-cluster
 spec:
   affinity: {}
-  imageCatalogRef:
-    apiGroup: postgresql.cnpg.io/v1
-    kind: ImageCatalog
-    major: 18
-    name: pg-minimal-trixie
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.3-minimal-trixie
   instances: 3
   managed:
     roles:
@@ -19,7 +15,8 @@ spec:
         name: immich
   postgresql:
     extensions:
-    - image: {}
+    - image:
+        reference: ghcr.io/cloudnative-pg/pgvector:0.8.2-18-trixie
       name: pgvector
     syncReplicaElectionConstraint:
       enabled: false
