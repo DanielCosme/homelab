@@ -53,11 +53,12 @@ func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
 		meta,
 		map[string]any{
-			"namespace":   Namespace,
-			"uploads-pvc": uploads_pvc,
-			"redis-srv":   redis_srv,
-			"redis":       Redis(),
-			// "deployment": Deployment(),
+			"namespace":         Namespace,
+			"uploads-pvc":       uploads_pvc,
+			"redis-srv":         redis_srv,
+			"redis-deployment":  Redis(),
+			"immich-deployment": Deployment(),
+			"immich-srv":        srv,
 		},
 	)
 	return kz.Stack("immich")

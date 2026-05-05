@@ -4,7 +4,9 @@ metadata:
   name: immich
   namespace: immich
 resources:
+- immich-deployment.yaml
+- immich-srv.yaml
 - namespace.yaml
+- redis-deployment.yaml
 - redis-srv.yaml
-- redis.yaml
 - uploads-pvc.yaml
