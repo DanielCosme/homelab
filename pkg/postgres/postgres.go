@@ -79,18 +79,18 @@ func ImmichDatabase() pg.Database {
 					Ensure: pg.EnsurePresent,
 				},
 			},
-			// {
-			// 	DatabaseObjectSpec: pg.DatabaseObjectSpec{
-			// 		Name:   "cube",
-			// 		Ensure: pg.EnsurePresent,
-			// 	},
-			// },
-			// {
-			// 	DatabaseObjectSpec: pg.DatabaseObjectSpec{
-			// 		Name:   "earthdistance",
-			// 		Ensure: pg.EnsurePresent,
-			// 	},
-			// },
+			{
+				DatabaseObjectSpec: pg.DatabaseObjectSpec{
+					Name:   "cube",
+					Ensure: pg.EnsurePresent,
+				},
+			},
+			{
+				DatabaseObjectSpec: pg.DatabaseObjectSpec{
+					Name:   "earthdistance",
+					Ensure: pg.EnsurePresent,
+				},
+			},
 		},
 	}
 	return kube_cnpg.NewDatabase(meta, spec)
