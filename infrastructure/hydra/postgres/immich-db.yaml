@@ -6,13 +6,6 @@ metadata:
 spec:
   cluster:
     name: cnpg-cluster
-  extensions:
-  - ensure: present
-    name: vectors
-  - ensure: present
-    name: cube
-  - ensure: present
-    name: earthdistance
   name: immich
   owner: immich
 status: {}

@@ -35,6 +35,19 @@ func Cluster() pg.Cluster {
 				StorageClassName: new(root.KUBE_LOCAL_STORAGE_CLASS),
 			},
 		},
+		// PostgresConfiguration: pg.PostgresConfiguration{
+		// 	Extensions: []pg.ExtensionConfiguration{
+		// 		{
+		// 			Name:                 "vector",
+		// 			ImageVolumeSource:    core.ImageVolumeSource{},
+		// 			ExtensionControlPath: []string{},
+		// 			DynamicLibraryPath:   []string{},
+		// 			LdLibraryPath:        []string{},
+		// 			BinPath:              []string{},
+		// 			Env:                  []pg.ExtensionEnvVar{},
+		// 		},
+		// 	},
+		// },
 		Managed: &pg.ManagedConfiguration{
 			Roles: []pg.RoleConfiguration{
 				{
@@ -61,24 +74,24 @@ func ImmichDatabase() pg.Database {
 			Name: cluster_meta.Meta().Name,
 		},
 		Extensions: []pg.ExtensionSpec{
-			{
-				DatabaseObjectSpec: pg.DatabaseObjectSpec{
-					Name:   "vectors",
-					Ensure: pg.EnsurePresent,
-				},
-			},
-			{
-				DatabaseObjectSpec: pg.DatabaseObjectSpec{
-					Name:   "cube",
-					Ensure: pg.EnsurePresent,
-				},
-			},
-			{
-				DatabaseObjectSpec: pg.DatabaseObjectSpec{
-					Name:   "earthdistance",
-					Ensure: pg.EnsurePresent,
-				},
-			},
+			// {
+			// 	DatabaseObjectSpec: pg.DatabaseObjectSpec{
+			// 		Name:   "vectors",
+			// 		Ensure: pg.EnsurePresent,
+			// 	},
+			// },
+			// {
+			// 	DatabaseObjectSpec: pg.DatabaseObjectSpec{
+			// 		Name:   "cube",
+			// 		Ensure: pg.EnsurePresent,
+			// 	},
+			// },
+			// {
+			// 	DatabaseObjectSpec: pg.DatabaseObjectSpec{
+			// 		Name:   "earthdistance",
+			// 		Ensure: pg.EnsurePresent,
+			// 	},
+			// },
 		},
 	}
 	return kube_cnpg.NewDatabase(meta, spec)
