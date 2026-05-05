@@ -18,7 +18,7 @@ func Stack() stack.Stack {
 		map[string]any{
 			"cluster-namespace": root.PGClusterNamespace,
 			"pg-cluster":        Cluster(),
-			// "immich-db":         ImmichDatabase(),
+			"immich-db":         ImmichDatabase(),
 		},
 	)
 	return kz.Stack("postgres")
@@ -66,8 +66,9 @@ var ImmichPGSecret = kube_cnpg.NewPGSecret(root.Immich.Name, root.PGClusterNames
 func ImmichDatabase() pg.Database {
 	meta := kube.NewMetadata(root.Immich.Name+"-db", root.PGClusterNamespace)
 	spec := pg.DatabaseSpec{
-		Name:  root.Immich.Name,
-		Owner: root.Immich.Name,
+		Ensure: pg.EnsureAbsent,
+		Name:   root.Immich.Name,
+		Owner:  root.Immich.Name,
 		ClusterRef: core.LocalObjectReference{
 			Name: cluster_meta.Meta().Name,
 		},

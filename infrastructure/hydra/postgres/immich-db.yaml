@@ -1,0 +1,15 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: immich-db
+  namespace: cnpg-cluster
+spec:
+  cluster:
+    name: cnpg-cluster
+  ensure: absent
+  extensions:
+  - ensure: present
+    name: vector
+  name: immich
+  owner: immich
+status: {}
