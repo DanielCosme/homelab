@@ -3,6 +3,7 @@ package immich
 import (
 	"danicos.dev/daniel/go-kube/pkg/kube"
 	"danicos.dev/daniel/go-kube/pkg/stack"
+	"danicos.dev/daniel/homelab/pkg/postgres"
 	"danicos.dev/daniel/homelab/pkg/root"
 	apps "k8s.io/api/apps/v1"
 	core "k8s.io/api/core/v1"
@@ -17,7 +18,7 @@ var Secret = struct {
 	DBHostKey     string
 	DBPortKey     string
 }{
-	Name:          root.Immich.Name + "-secret",
+	Name:          postgres.ImmichPGSecret.Name,
 	DBNameKey:     "db_name",
 	DBUsernameKey: "db_username",
 	DBPasswordKey: "db_password",
