@@ -60,6 +60,26 @@ func ImmichDatabase() pg.Database {
 		ClusterRef: core.LocalObjectReference{
 			Name: cluster_meta.Meta().Name,
 		},
+		Extensions: []pg.ExtensionSpec{
+			{
+				DatabaseObjectSpec: pg.DatabaseObjectSpec{
+					Name:   "vectors",
+					Ensure: pg.EnsurePresent,
+				},
+			},
+			{
+				DatabaseObjectSpec: pg.DatabaseObjectSpec{
+					Name:   "cube",
+					Ensure: pg.EnsurePresent,
+				},
+			},
+			{
+				DatabaseObjectSpec: pg.DatabaseObjectSpec{
+					Name:   "earthdistance",
+					Ensure: pg.EnsurePresent,
+				},
+			},
+		},
 	}
 	return kube_cnpg.NewDatabase(meta, spec)
 }
