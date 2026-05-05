@@ -7,9 +7,11 @@ metadata:
   namespace: immich
 spec:
   ports:
-  - port: 2283
+  - nodePort: 30011
+    port: 2283
     targetPort: 0
   selector:
     app: immich
+  type: NodePort
 status:
   loadBalancer: {}

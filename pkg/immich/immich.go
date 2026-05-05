@@ -40,6 +40,9 @@ var redis_srv core.Service
 func init() {
 	meta = kube.NewMetadata(root.Immich.Name, Namespace)
 	srv = meta.Service(root.Immich.Port)
+	srv.Spec.Type = core.ServiceTypeNodePort
+	srv.Spec.Ports[0].NodePort = int32(root.Immich.Public.NodePort)
+
 	uploads_pvc = meta.PVC()
 	uploads_pvc.Spec.StorageClassName = new(root.TrueNASSTorageClassNFS)
 	uploads_pvc.Spec.AccessModes = []core.PersistentVolumeAccessMode{core.ReadWriteMany}

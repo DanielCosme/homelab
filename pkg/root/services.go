@@ -37,7 +37,10 @@ var Immich = Service{
 	Name:  "immich",
 	Image: "ghcr.io/immich-app/immich-server:v2.7.5",
 	Port:  2283, // Server Port
-	// PublicURL: "https://photos.danicos.me",
+	Public: &Public{
+		URL:      "https://photos.danicos.me",
+		NodePort: 30011,
+	},
 }
 
 var (
