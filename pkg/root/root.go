@@ -38,6 +38,9 @@ const (
 	HELM_CLOUD_NATIVE_PG_URL           = "https://cloudnative-pg.github.io/charts"
 	HELM_CLOUD_NATIVE_PG_CHART         = "cloudnative-pg"
 	HELM_CLOUD_NATIVE_PG_CHART_VERSION = "0.28.0"
+	PG_VERSION_NAME                    = "pg-minimal-trixie"
+	PG_VERSION_18                      = 18
+	PG_VERSION_18_IMAGE                = "ghcr.io/cloudnative-pg/postgresql:18.3-minimal-trixie"
 )
 
 var (

@@ -5,6 +5,11 @@ metadata:
   namespace: cnpg-cluster
 spec:
   affinity: {}
+  imageCatalogRef:
+    apiGroup: postgresql.cnpg.io/v1
+    kind: ClusterImageCatalog
+    major: 18
+    name: pg-minimal-trixie
   instances: 3
   managed:
     roles:
@@ -13,6 +18,9 @@ spec:
       passwordSecret:
         name: immich
   postgresql:
+    extensions:
+    - image: {}
+      name: pgvector
     syncReplicaElectionConstraint:
       enabled: false
   resources: {}

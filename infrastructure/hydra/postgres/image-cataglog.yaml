@@ -1,0 +1,12 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: ClusterImageCatalog
+metadata:
+  name: pg-minimal-trixie
+spec:
+  images:
+  - extensions:
+    - image:
+        reference: ghcr.io/cloudnative-pg/pgvector:0.8.2-18-trixie
+      name: pgvector
+    image: ghcr.io/cloudnative-pg/postgresql:18.3-minimal-trixie
+    major: 18
