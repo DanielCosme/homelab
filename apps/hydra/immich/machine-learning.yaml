@@ -18,7 +18,7 @@ spec:
       containers:
       - env:
         - name: IMMICH_PORT
-          value: "2283"
+          value: "3003"
         image: ghcr.io/immich-app/immich-machine-learning:v2.7.5
         name: immich-machine-learning
         resources: {}
