@@ -82,6 +82,10 @@ func Stack() stack.Stack {
 }
 
 func MachineLearning() apps.Deployment {
+	envMapping := map[string]string{
+		// "REDIS_PORT":  fmt.Sprintf("%d", RedisPort),
+		"IMMICH_PORT": fmt.Sprintf("%d", root.Immich.Port),
+	}
 	cacheVol := kube.NewVolumeFrom(kube.VolumeSourcePVC, "cache", machine_learning_pvc.Name)
 	podSpec := core.PodSpec{
 		Containers: []core.Container{
@@ -92,6 +96,7 @@ func MachineLearning() apps.Deployment {
 					Name:      cacheVol.Name,
 					MountPath: "/cache",
 				}},
+				Env: kube.NewEnvVar(envMapping),
 			},
 		},
 		Volumes: []core.Volume{cacheVol},
