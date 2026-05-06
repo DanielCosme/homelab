@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: immich-machine-learning
+  name: immich-machine-learning
+  namespace: immich
+spec:
+  selector:
+    matchLabels:
+      app: immich-machine-learning
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: immich-machine-learning
+    spec:
+      containers:
+      - image: ghcr.io/immich-app/immich-machine-learning:v2.7.5
+        name: immich-machine-learning
+        resources: {}
+        volumeMounts:
+        - mountPath: /cache
+          name: cache
+      volumes:
+      - name: cache
+        persistentVolumeClaim:
+          claimName: immich-machine-learning-pvc
+status: {}

@@ -29,6 +29,7 @@ var Secret = struct {
 }
 
 const RedisPort = 6379
+const MachineLearningPort = 3003
 
 var meta kube.Metadata
 var Namespace = kube.Namespace(root.Immich.Name)
@@ -36,6 +37,9 @@ var srv core.Service
 var uploads_pvc core.PersistentVolumeClaim
 var redis_meta kube.Metadata
 var redis_srv core.Service
+var machine_learning_meta kube.Metadata
+var machine_learning_srv core.Service
+var machine_learning_pvc core.PersistentVolumeClaim
 
 func init() {
 	meta = kube.NewMetadata(root.Immich.Name, Namespace)
@@ -46,28 +50,53 @@ func init() {
 	uploads_pvc = meta.PVC()
 	uploads_pvc.Spec.StorageClassName = new(root.TrueNASSTorageClassNFS)
 	uploads_pvc.Spec.AccessModes = []core.PersistentVolumeAccessMode{core.ReadWriteMany}
-	req := kube.StorageRequest(resource.MustParse("200Gi"))
 	uploads_pvc.Spec.Resources = core.VolumeResourceRequirements{
-		Requests: req,
+		Requests: kube.StorageRequest(resource.MustParse("200Gi")),
 	}
 
 	redis_meta = kube.NewMetadata("redis", Namespace)
 	redis_srv = redis_meta.Service(RedisPort)
+
+	machine_learning_meta = kube.NewMetadata(root.Immich.Name+"-machine-learning", Namespace)
+	machine_learning_srv = machine_learning_meta.Service(MachineLearningPort)
+	machine_learning_pvc = machine_learning_meta.PVC()
+	machine_learning_pvc.Spec.StorageClassName = new(root.LONGHORN_STORAGE_CLASS)
 }
 
 func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
 		meta,
 		map[string]any{
-			"namespace":         Namespace,
-			"uploads-pvc":       uploads_pvc,
-			"redis-srv":         redis_srv,
-			"redis-deployment":  Redis(),
-			"immich-deployment": Deployment(),
-			"immich-srv":        srv,
+			"namespace":            Namespace,
+			"uploads-pvc":          uploads_pvc,
+			"redis-srv":            redis_srv,
+			"redis-deployment":     Redis(),
+			"immich-deployment":    Deployment(),
+			"immich-srv":           srv,
+			"machine-learning-pvc": machine_learning_pvc,
+			"machine-learning-srv": machine_learning_srv,
+			"machine-learning":     MachineLearning(),
 		},
 	)
 	return kz.Stack("immich")
+}
+
+func MachineLearning() apps.Deployment {
+	cacheVol := kube.NewVolumeFrom(kube.VolumeSourcePVC, "cache", machine_learning_pvc.Name)
+	podSpec := core.PodSpec{
+		Containers: []core.Container{
+			{
+				Name:  machine_learning_meta.Meta().Name,
+				Image: "ghcr.io/immich-app/immich-machine-learning:v2.7.5",
+				VolumeMounts: []core.VolumeMount{{
+					Name:      cacheVol.Name,
+					MountPath: "/cache",
+				}},
+			},
+		},
+		Volumes: []core.Volume{cacheVol},
+	}
+	return kube.NewDeployment(machine_learning_meta, podSpec)
 }
 
 func Deployment() apps.Deployment {

@@ -16,6 +16,7 @@ const (
 
 const (
 	KUBE_LOCAL_STORAGE_CLASS = "local-path"
+	LONGHORN_STORAGE_CLASS   = "longhorn"
 )
 
 const (

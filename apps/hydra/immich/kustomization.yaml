@@ -6,6 +6,9 @@ metadata:
 resources:
 - immich-deployment.yaml
 - immich-srv.yaml
+- machine-learning-pvc.yaml
+- machine-learning-srv.yaml
+- machine-learning.yaml
 - namespace.yaml
 - redis-deployment.yaml
 - redis-srv.yaml
