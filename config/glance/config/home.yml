@@ -113,6 +113,7 @@
             - UCkOTo20XS1LL95g2p6CcE3A # Few Acres Farm
             - UCBn3itOeDjCeuol70nQq1cg # Domaie Sauvage
           style: grid-cards
+          collapse-after-rows: 1
 
         - type: videos
           title: Hardware
@@ -120,6 +121,7 @@
             - UCBB0oz7Yo_35gnbPYGKGJTA # Diesel Creek
             - UCKqKiBDpq9j29bXbBx0cfOw # BuildWit
           style: grid-cards
+          collapse-after-rows: 1
 
     - size: small
       widgets:
