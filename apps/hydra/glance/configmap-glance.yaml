@@ -107,19 +107,32 @@ data:
               # playlists:
               style: horizontal-cards
 
-            - type: rss
-              limit: 15
-              collapse-after: 5
-              style: detailed-list
-              cache: 12h
-              feeds:
-                - url: https://selfh.st/rss/
-                - title: selfh.st
-                - url: http://orthochristian.com/xml/rss.xml
+            - type: group
+              widgets:
+                - type: rss
+                  limit: 15
+                  title: Tech
+                  collapse-after: 5
+                  style: detailed-list
+                  cache: 12h
+                  feeds:
+                    - url: https://selfh.st/rss/
+                    - title: selfh.st
+                    - url: https://archlinux.org/feeds/news
+                      title: Arch Linux (BTW)
+                      # limit: 3
+                - type: rss
+                  limit: 15
                   title: Orthodoxy
-                - url: https://archlinux.org/feeds/news/
-                  title: Arch Linux (BTW)
-                  # limit: 3
+                  collapse-after: 5
+                  style: detailed-list
+                  cache: 12h
+                  feeds:
+                    - url: http://orthochristian.com/xml/rss.xml
+                      title: Moscow Sretensky Monastery
+                    - url: https://www.oca.org/news/feed
+                      title: OCA Feed
+                      # limit: 3
 
         - size: small
           widgets:
