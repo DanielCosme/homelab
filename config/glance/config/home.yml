@@ -108,7 +108,7 @@
 
         - type: releases
           show-source-icon: true
-          # collapse-after: 10
+          collapse-after: 10
           # limit: 50
           repositories:
             - immich-app/immich
@@ -117,7 +117,6 @@
             - glanceapp/glance
             - jellyfin/jellyfin
             - fluxcd/flux2
-            # - ghcr.io:cloudnative-pg/postgresql
 
 - name: Entertainment
   columns:
