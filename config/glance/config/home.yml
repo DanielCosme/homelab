@@ -64,7 +64,8 @@
           title: Chill Music
           channels:
             - UCD3mA_LbjO8V515Hw1jlYhg # Cigarette in Paris
-            - UC9fr5ejRTqZWIBn5CfqEKng # The Silent Gentleman
+            # - UC9fr5ejRTqZWIBn5CfqEKng # The Silent Gentleman
+            - UC50fC49to1XtTsRamJbrnOQ # Halls of Moria
           # playlists:
           style: horizontal-cards
 
