@@ -91,6 +91,14 @@ data:
                       url: https://x.com/Cosmedani05
         - size: full
           widgets:
+            - type: search
+              search-engine: https://search.brave.com/search?q={QUERY}
+              new-tab: true
+              bangs:
+                - title: YouTube
+                  shortcut: "!yt"
+                  url: https://www.youtube.com/results?search_query={QUERY}
+
             - type: videos
               title: Chill Music
               channels:
@@ -159,7 +167,7 @@ data:
                     - UCBn3itOeDjCeuol70nQq1cg # Domaie Sauvage
                   style: grid-cards
                   collapse-after-rows: 2
-                  limit: 8
+                  limit: 16
 
                 - type: videos
                   title: Hardware
@@ -168,7 +176,7 @@ data:
                     - UCKqKiBDpq9j29bXbBx0cfOw # BuildWit
                   style: grid-cards
                   collapse-after-rows: 2
-                  limit: 8
+                  limit: 16
 
         - size: small
           widgets:
