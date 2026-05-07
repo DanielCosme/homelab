@@ -41,48 +41,50 @@ data:
     # icon: di:immich # di for Dashboard icons https://github.com/homarr-labs/dashboard-icons
     # icon: mdi:camera # mdi for Material Design icons https://pictogrammers.com/library/mdi/
     - name: Home
-      head-widgets:
-        - type: bookmarks
-          groups:
-            - title: "Cloud Hosted"
-              description: "Hosted in my OVH Cloud VPS"
-              color: 10 70 50
-              links:
-                - title: Curious Ape
-                  icon: si:spidermonkey
-                  url: https://ape.danicos.me
-                - title: Personal Webpage
-                  icon: mdi:web
-                  url: https://danicos.me
-                - title: Git platform (Gitea)
-                  icon: sh:gitea
-                  url: https://danicos.dev
-            - title: "Hosted in Homelab"
-              description: "Hosted in my personal homlab, some of them accesible on my Private VPN, others publicly exposed via reverse proxy"
-              color: 200 50 50
-              links:
-                - title: Linkding
-                  icon: sh:linkding
-                  url: https://link.danicos.me
-                - title: Immich
-                  icon: sh:immich
-                  url: https://photos.danicos.me
-                - title: Immich VPN
-                  icon: sh:immich
-                  url: http://hydra-0.orca-uaru.ts.net:30011
-                - title: TrueNAS VPN
-                  icon: sh:truenas-core
-                  url: http://apex-truenas.orca-uaru.ts.net
-            - title: "Public"
-              color: 100 40 25
-              links:
-                - title: Github
-                  icon: sh:github
-                  url: https://github.com/danielcosme
-                - title: X
-                  icon: sh:x
-                  url: https://x.com/Cosmedani05
+      # head-widgets:
       columns:
+        - size: small
+          widgets:
+            - type: bookmarks
+              groups:
+                - title: "Cloud Hosted"
+                  description: "Hosted in my OVH Cloud VPS"
+                  color: 10 70 50
+                  links:
+                    - title: Curious Ape
+                      icon: si:spidermonkey
+                      url: https://ape.danicos.me
+                    - title: Personal Webpage
+                      icon: mdi:web
+                      url: https://danicos.me
+                    - title: Git platform (Gitea)
+                      icon: sh:gitea
+                      url: https://danicos.dev
+                - title: "Hosted in Homelab"
+                  description: "Hosted in my personal homlab, some of them accesible on my Private VPN, others publicly exposed via reverse proxy"
+                  color: 200 50 50
+                  links:
+                    - title: Linkding
+                      icon: sh:linkding
+                      url: https://link.danicos.me
+                    - title: Immich
+                      icon: sh:immich
+                      url: https://photos.danicos.me
+                    - title: Immich VPN
+                      icon: sh:immich
+                      url: http://hydra-0.orca-uaru.ts.net:30011
+                    - title: TrueNAS VPN
+                      icon: sh:truenas-core
+                      url: http://apex-truenas.orca-uaru.ts.net
+                - title: "Public"
+                  color: 100 40 25
+                  links:
+                    - title: Github
+                      icon: sh:github
+                      url: https://github.com/danielcosme
+                    - title: X
+                      icon: sh:x
+                      url: https://x.com/Cosmedani05
         - size: full
           widgets:
             - type: calendar
