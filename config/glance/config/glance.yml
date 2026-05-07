@@ -1,7 +1,7 @@
 # Config: https://github.com/glanceapp/glance/blob/main/docs/configuration.md
 theme:
   background-color: 186 21 20
-  contrast-multiplier: 1.2
+  contrast-multiplier: 1.5
   primary-color: 97 13 80
   # Note: assets are cached by the browser, changes to the CSS file
   # will not be reflected until the browser cache is cleared (Ctrl+F5)
