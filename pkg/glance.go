@@ -19,7 +19,8 @@ var Secret = struct {
 var Namespace = kube.Namespace(root.Glance.Name)
 var meta kube.Metadata
 var srv core.Service
-var config_map core.ConfigMap
+var config_glance core.ConfigMap
+var config_assets core.ConfigMap
 
 func init() {
 	meta = kube.NewMetadata(root.Glance.Name, Namespace)
@@ -27,19 +28,21 @@ func init() {
 	srv.Spec.Type = core.ServiceTypeNodePort
 	srv.Spec.Ports[0].NodePort = int32(root.Glance.Public.NodePort)
 
-	config_map = kube.ConfigFromFile("glance.yml", "./config/glance/config/glance.yml", meta)
-	config_map.Data["home.yml"] = string(kube.ReadFileBytes("./config/glance/config/home.yml"))
-	config_map.Data["user.css"] = string(kube.ReadFileBytes("./config/glance/assets/user.css"))
+	config_glance = kube.ConfigFromFile("glance.yml", "./config/glance/config/glance.yml", meta)
+	config_glance.Data["home.yml"] = string(kube.ReadFileBytes("./config/glance/config/home.yml"))
+	meta_assets := kube.NewMetadata(root.Glance.Name+"-assets", Namespace)
+	config_assets = kube.ConfigFromFile("user.css", "./config/glance/assets/user.css", meta_assets)
 }
 
 func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
 		meta,
 		map[string]any{
-			"namespace": Namespace,
-			"service":   srv,
-			"configmap": config_map,
-			// "deployment": Deployment(),
+			"namespace":        Namespace,
+			"service":          srv,
+			"configmap-glance": config_glance,
+			"configmap-assets": config_assets,
+			"deployment":       Deployment(),
 		},
 	)
 	return kz.Stack("glance")
@@ -50,14 +53,42 @@ func Deployment() apps.Deployment {
 	// Config volume - ReadOnly?
 	// Assets volume - ReadOnly?
 	// Mount /etc/localtime (ReadOnly)
+	configVol := kube.NewVolumeFrom(kube.VolumeSourceConfigMap, "config", config_glance.Name)
+	assetsVol := kube.NewVolumeFrom(kube.VolumeSourceConfigMap, "assets", config_assets.Name)
+	localtimeVol := core.Volume{
+		Name: "localtime",
+		VolumeSource: core.VolumeSource{
+			HostPath: &core.HostPathVolumeSource{
+				Path: "/etc/localtime",
+				Type: new(core.HostPathFile),
+			},
+		},
+	}
 	podSpec := core.PodSpec{
 		Containers: []core.Container{{
 			Name:  root.Glance.Name,
 			Image: root.Glance.Image,
-			Env:   kube.NewEnvVarWithSecret(nil, nil, Secret.Name),
+			// Env:   kube.NewEnvVarWithSecret(nil, nil, Secret.Name),
+			VolumeMounts: []core.VolumeMount{
+				{
+					Name:      configVol.Name,
+					MountPath: "/app/config",
+				},
+				{
+					Name:      assetsVol.Name,
+					MountPath: "/app/assets",
+				},
+				{
+					Name:      localtimeVol.Name,
+					MountPath: "/etc/localtime",
+					ReadOnly:  true,
+				},
+			},
 		}},
 		Volumes: []core.Volume{
-			kube.NewVolumeFrom(kube.VolumeSourceConfigMap, "config", config_map.Name),
+			configVol,
+			assetsVol,
+			localtimeVol,
 		},
 	}
 	return kube.NewDeployment(meta, podSpec)

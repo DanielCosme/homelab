@@ -4,6 +4,8 @@ metadata:
   name: glance
   namespace: glance
 resources:
-- configmap.yaml
+- configmap-assets.yaml
+- configmap-glance.yaml
+- deployment.yaml
 - namespace.yaml
 - service.yaml

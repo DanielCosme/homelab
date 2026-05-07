@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  user.css: |
+    main {
+    }
+kind: ConfigMap
+metadata:
+  name: glance-assets-configmap
+  namespace: glance

@@ -3,6 +3,15 @@ data:
   glance.yml: |
     server:
       assets-path: /app/assets
+    # proxied: true
+
+    # auth:
+    # secret-key: # this must be set to a random value generated using the secret:make CLI command
+    # users:
+    #   admin:
+    #     password: 123456
+    #   svilen:
+    #     password: 123456
 
     theme:
       # Note: assets are cached by the browser, changes to the CSS file
@@ -102,9 +111,6 @@ data:
                 - go-gitea/gitea
                 - immich-app/immich
                 - syncthing/syncthing
-  user.css: |
-    main {
-    }
 kind: ConfigMap
 metadata:
   name: glance-configmap

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: glance
+  name: glance
+  namespace: glance
+spec:
+  selector:
+    matchLabels:
+      app: glance
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: glance
+    spec:
+      containers:
+      - image: glanceapp/glance:v0.8.4
+        name: glance
+        resources: {}
+        volumeMounts:
+        - mountPath: /app/config
+          name: config
+        - mountPath: /app/assets
+          name: assets
+        - mountPath: /etc/localtime
+          name: localtime
+          readOnly: true
+      volumes:
+      - configMap:
+          name: glance-configmap
+        name: config
+      - configMap:
+          name: glance-assets-configmap
+        name: assets
+      - hostPath:
+          path: /etc/localtime
+          type: File
+        name: localtime
+status: {}
