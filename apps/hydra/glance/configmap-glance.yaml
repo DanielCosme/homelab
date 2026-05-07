@@ -146,7 +146,7 @@ data:
 
             - type: releases
               show-source-icon: true
-              # collapse-after: 10
+              collapse-after: 10
               # limit: 50
               repositories:
                 - immich-app/immich
@@ -155,7 +155,6 @@ data:
                 - glanceapp/glance
                 - jellyfin/jellyfin
                 - fluxcd/flux2
-                # - ghcr.io:cloudnative-pg/postgresql
 
     - name: Entertainment
       columns:
@@ -182,6 +181,25 @@ data:
                   limit: 16
 
                 - type: videos
+                  title: Computers
+                  style: vertical-list
+                  collapse-after-rows: 2
+                  limit: 16
+                  channels:
+                    - UCDAck-gFPTrgTx_qp59-bQA # Kubecraft
+                    - UCsnGwSIHyoYN0kiINAGUKxg # Wolfgang Channel
+
+                - type: videos
+                  title: Fun
+                  channels:
+                    - UCtinbF-Q-fVthA0qrFQTgXQ # Casey Neistat
+                    - UCp00ppkfPFBUTiiNNd8kS9Q # Buttery Bros
+                    - UCixD9UbKvDxzGNiPC_fgHyA # Paolo From Tokio
+                  style: grid-cards
+                  collapse-after-rows: 2
+                  limit: 16
+
+                - type: videos
                   title: Machines
                   channels:
                     - UCBB0oz7Yo_35gnbPYGKGJTA # Diesel Creek
@@ -201,11 +219,17 @@ data:
         - size: small
           widgets:
             - type: videos
-              title: Other
-              channels:
-                - UCtinbF-Q-fVthA0qrFQTgXQ # Casey Neistat
-                - UCp00ppkfPFBUTiiNNd8kS9Q # Buttery Bros
+              title: music
               style: vertical-list
+              channels:
+                - UCPVNT9hahuwpVwEpAgO0BtQ # Brutish Heavy Music
+                - UCZD9nBgm7LhKZMOjq0-EOiA # DJ Nina Caballero
+
+            - type: videos
+              title: Monitor the situation
+              style: vertical-list
+              channels:
+                - UCwrpo8z3IgJln2ZidqBUiMA # Cappy Army
 kind: ConfigMap
 metadata:
   name: glance-configmap
