@@ -145,7 +145,7 @@
 
             - type: videos
               title: Computers
-              style: vertical-list
+              style: grid-cards
               collapse-after-rows: 2
               limit: 16
               channels:
