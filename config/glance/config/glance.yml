@@ -3,6 +3,9 @@ theme:
   background-color: 186 21 20
   contrast-multiplier: 1.2
   primary-color: 97 13 80
+  # Note: assets are cached by the browser, changes to the CSS file
+  # will not be reflected until the browser cache is cleared (Ctrl+F5)
+  custom-css-file: /assets/user.css
 
 branding:
   custom-footer: |
@@ -24,11 +27,6 @@ server:
 #     password: 123456
 #   svilen:
 #     password: 123456
-
-theme:
-  # Note: assets are cached by the browser, changes to the CSS file
-  # will not be reflected until the browser cache is cleared (Ctrl+F5)
-  custom-css-file: /assets/user.css
 
 pages:
   # It's not necessary to create a new file for each page and include it, you can simply
