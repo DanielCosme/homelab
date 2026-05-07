@@ -9,7 +9,8 @@
       widgets:
         - type: monitor
           cache: 1m
-          title: Services Public
+          title: Public Services (some hosted in Homelab)
+          style: ""
           sites:
             - title: Git platform (Gitea)
               icon: sh:gitea
@@ -20,13 +21,20 @@
             - title: Linkding
               icon: sh:linkding
               url: https://link.danicos.me
+            - title: Curious Ape
+              icon: si:spidermonkey
+              url: https://ape.danicos.me
         - type: monitor
           cache: 1m
-          title: Services VPN
+          title: Private Services VPN
+          style: compact
           sites:
             - title: Immich VPN
               icon: sh:immich
               url: http://hydra-0.orca-uaru.ts.net:30011
+            - title: Linkding VPN
+              icon: sh:linkding
+              url: https://hydra-0.orca-uaru.ts.net:30010
             - title: TrueNAS VPN
               icon: sh:truenas-core
               url: http://apex-truenas.orca-uaru.ts.net
@@ -36,9 +44,6 @@
               description: "Hosted in my OVH Cloud VPS"
               color: 10 70 50
               links:
-                - title: Curious Ape
-                  icon: si:spidermonkey
-                  url: https://ape.danicos.me
                 - title: Personal Webpage
                   icon: mdi:web
                   url: https://danicos.me
