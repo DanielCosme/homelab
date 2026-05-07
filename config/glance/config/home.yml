@@ -117,7 +117,7 @@
             - glanceapp/glance
             - jellyfin/jellyfin
             - fluxcd/flux2
-            - ghcr.io:cloudnative-pg/postgresql
+            # - ghcr.io:cloudnative-pg/postgresql
 
 - name: Entertainment
   columns:
