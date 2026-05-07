@@ -16,7 +16,7 @@
               url: https://danicos.me
             - title: Git platform (Gitea)
               url: https://danicos.dev
-        - title: "Homelab Hosted"
+        - title: "Hosted in Homelab"
           description: "Hosted in my personal homlab, some of them accesible on my Private VPN, others publicly exposed via reverse proxy"
           color: 200 50 50
           links:
@@ -26,14 +26,15 @@
               url: https://photos.danicos.me
             - title: Immich VPN
               url: http://hydra-0.orca-uaru.ts.net:30011
-        - title: "Non Self-Hosted"
-          description: "Links for services I don't host myself"
+            - title: TrueNAS VPN
+              url: http://apex-truenas.orca-uaru.ts.net
+        - title: "Public"
           color: 100 40 25
           links:
-            - title: YouTube
-              url: https://www.youtube.com/
-            - title: Prime Video
-              url: https://www.primevideo.com/
+            - title: Github
+              url: https://github.com/danielcosme
+            - title: X
+              url: https://x.com/Cosmedani05
   columns:
     - size: full
       widgets:
