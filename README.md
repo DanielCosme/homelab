@@ -66,13 +66,6 @@ Block Storage from NAS
 Distributed Storage from:
 	- Longhorn
 	
-	
-# True NAS key
-1-ndzlY0C6o2KW9DJHnjTcjXi49VEFgDp5Up8GZ7FXmgNoU7LNwwI7MMrk2WbI6o5J
-
-TrueNAS CSI Driver configuration
-
-
 ## NFS
 Via NAS for Files, like photos, videos, etc...
 ## ISCS
