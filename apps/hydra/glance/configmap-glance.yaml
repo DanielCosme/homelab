@@ -12,7 +12,7 @@ data:
 
     branding:
       custom-footer: |
-        <p>Configured and Deployed via GitOps from: <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
+        <p>Configured and Deployed using GitOps from: <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
       # logo-url: /assets/logo.png
       # favicon-url: /assets/logo.png
       app-name: "Daniel's Dashboard"
@@ -98,7 +98,8 @@ data:
             - type: videos
               channels:
                 - UCD3mA_LbjO8V515Hw1jlYhg # Cigarette in Paris
-                - TheSilentGentleman-l8h
+                # - TheSilentGentleman-l8h
+                # - @AURALE_MUSIC
 
             - type: twitch-channels
               channels:
@@ -107,25 +108,29 @@ data:
 
         - size: small
           widgets:
-            - type: group
-              widgets:
-                - type: clock
-                  hour-format: 24h
-                  timezones:
-                    - timezone: America/Montreal
-                      label: Montreal
-                    - timezone: America/Vancouver
-                      label: Vancouver
-                    - timezone: UTC
-                      label: UTC
-                    - timezone: America/Bogota
-                      label: Bogota
-                    - timezone: Europe/Madrid
-                      label: Madrid
-                    - timezone: Europe/Sofia
-                      label: Sofia (Bulgaria)
-                - type: calendar
-                  first-day-of-week: monday
+            - type: weather
+              location: Montreal, Canada
+              units: metric # alternatively "imperial"
+              hour-format: 24h # alternatively "24h"
+              # Optionally hide the location from being displayed in the widget
+              # hide-location: true
+            - type: clock
+              hour-format: 24h
+              timezones:
+                - timezone: America/Montreal
+                  label: Montreal
+                - timezone: America/Bogota
+                  label: Bogota
+                - timezone: America/Vancouver
+                  label: Vancouver
+                - timezone: UTC
+                  label: UTC
+                - timezone: Europe/Madrid
+                  label: Madrid
+                - timezone: Europe/Sofia
+                  label: Sofia (Bulgaria)
+            - type: calendar
+              first-day-of-week: monday
     - name: Default
       # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
       # hide-desktop-navigation: true

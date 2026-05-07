@@ -9,7 +9,7 @@ theme:
 
 branding:
   custom-footer: |
-    <p>Configured and Deployed via GitOps from: <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
+    <p>Configured and Deployed using GitOps from: <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
   # logo-url: /assets/logo.png
   # favicon-url: /assets/logo.png
   app-name: "Daniel's Dashboard"
