@@ -6,7 +6,7 @@
   head-widgets:
     - type: bookmarks
       groups:
-        - title: "VPS Hosted"
+        - title: "Cloud Hosted"
           description: "Hosted in my OVH Cloud VPS"
           color: 10 70 50
           links:
@@ -14,7 +14,7 @@
               url: https://ape.danicos.me
             - title: Personal Webpage
               url: https://danicos.me
-            - title: Gitea
+            - title: Git platform (Gitea)
               url: https://danicos.dev
         - title: "Homelab Hosted"
           description: "Hosted in my personal homlab, some of them accesible on my Private VPN, others publicly exposed via reverse proxy"
@@ -25,7 +25,7 @@
             - title: Immich
               url: https://photos.danicos.me
             - title: Immich VPN
-              url: https://apex-truenas.orca-uaru.ts.net:30011
+              url: https://hydra-0.orca-uaru.ts.net:30011
         - title: "Non Self-Hosted"
           description: "Links for services I don't host myself"
           color: 100 40 25
