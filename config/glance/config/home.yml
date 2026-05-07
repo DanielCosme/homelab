@@ -25,7 +25,7 @@
             - title: Immich
               url: https://photos.danicos.me
             - title: Immich VPN
-              url: https://hydra-0.orca-uaru.ts.net:30011
+              url: http://hydra-0.orca-uaru.ts.net:30011
         - title: "Non Self-Hosted"
           description: "Links for services I don't host myself"
           color: 100 40 25
