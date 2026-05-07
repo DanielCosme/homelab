@@ -146,11 +146,30 @@ data:
         - size: full
           widgets:
             - type: videos
-              title: Entertainment
+              title: Homestead-esque
+              channels:
+                - UCv2Li-PxOya3XCL-St_4DkA # Homesteady
+                - UCkOTo20XS1LL95g2p6CcE3A # Few Acres Farm
+                - UCBn3itOeDjCeuol70nQq1cg # Domaie Sauvage
+              # playlists:
+              style: horizontal-cards
+              # limit
+
+            - type: videos
+              title: Hardware
+              channels:
+                - UCBB0oz7Yo_35gnbPYGKGJTA # Diesel Creek
+                - UCKqKiBDpq9j29bXbBx0cfOw # BuildWit
+              # playlists:
+              style: horizontal-cards
+              # limit
+
+            - type: videos
+              title: Other
               channels:
                 - UCtinbF-Q-fVthA0qrFQTgXQ # Casey Neistat
               # playlists:
-              style: grid-cards
+              style: horizontal-cards
               # limit
     - name: Info
       columns:
