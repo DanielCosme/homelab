@@ -142,8 +142,7 @@ data:
               location: Montreal, Canada
               units: metric # alternatively "imperial"
               hour-format: 24h # alternatively "24h"
-              # Optionally hide the location from being displayed in the widget
-              # hide-location: true
+              show-area-name: true
 
     - name: Entertainment
       columns:
