@@ -2,7 +2,7 @@
 # icon: sh:immich # sh for selfh.st icons https://selfh.st/icons/
 # icon: di:immich # di for Dashboard icons https://github.com/homarr-labs/dashboard-icons
 # icon: mdi:camera # mdi for Material Design icons https://pictogrammers.com/library/mdi/
-- name: Home
+- name: "Daniel's Dashboard"
   # head-widgets:
   columns:
     - size: small
@@ -96,14 +96,27 @@
             - timezone: Europe/Sofia
               label: Sofia (Bulgaria)
 
-        - type: calendar
-          first-day-of-week: monday
+        - type: group
+          widgets:
+            - type: calendar
+              first-day-of-week: monday
 
-        - type: weather
-          location: Montreal, Canada
-          units: metric # alternatively "imperial"
-          hour-format: 24h # alternatively "24h"
-          show-area-name: true
+            - type: weather
+              location: Montreal, Canada
+              units: metric
+              hour-format: 24h
+              show-area-name: true
+        - type: releases
+          show-source-icon: true
+          collapse-after: 10
+          limit: 50
+          repositories:
+            - glanceapp/glance
+            - dockerhub:glanceapp/glance
+            - dockerhub:alpine
+            - go-gitea/gitea
+            - jellyfin/jellyfin
+            - codeberg:redict/redict
 
 - name: Entertainment
   columns:
@@ -130,7 +143,7 @@
               limit: 16
 
             - type: videos
-              title: Hardware
+              title: Machines
               channels:
                 - UCBB0oz7Yo_35gnbPYGKGJTA # Diesel Creek
                 - UCKqKiBDpq9j29bXbBx0cfOw # BuildWit
