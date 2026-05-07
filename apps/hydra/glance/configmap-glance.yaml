@@ -2,6 +2,11 @@ apiVersion: v1
 data:
   glance.yml: |
     # Config: https://github.com/glanceapp/glance/blob/main/docs/configuration.md
+    theme:
+      background-color: 186 21 20
+      contrast-multiplier: 1.2
+      primary-color: 97 13 80
+
     branding:
       custom-footer: |
         <p>Configured and Deployed via GitOps at: <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
