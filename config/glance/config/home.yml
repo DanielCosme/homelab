@@ -63,19 +63,8 @@
             # - TheSilentGentleman-l8h
             # - @AURALE_MUSIC
 
-        - type: twitch-channels
-          channels:
-            - theprimeagen
-            - j_blow
-
     - size: small
       widgets:
-        - type: weather
-          location: Montreal, Canada
-          units: metric # alternatively "imperial"
-          hour-format: 24h # alternatively "24h"
-          # Optionally hide the location from being displayed in the widget
-          # hide-location: true
         - type: clock
           hour-format: 24h
           timezones:
@@ -91,8 +80,45 @@
               label: Madrid
             - timezone: Europe/Sofia
               label: Sofia (Bulgaria)
+
+        - type: weather
+          location: Montreal, Canada
+          units: metric # alternatively "imperial"
+          hour-format: 24h # alternatively "24h"
+          # Optionally hide the location from being displayed in the widget
+          # hide-location: true
+
         - type: calendar
           first-day-of-week: monday
+- name: Entertainment
+- name: Info
+  columns:
+    - size: small
+      widgets:
+        - type: twitch-channels
+          channels:
+            - theprimeagen
+            - j_blow
+
+    - size: full
+      widgets:
+        - type: calendar
+          first-day-of-week: monday
+
+    - size: small
+      widgets:
+        - type: markets
+          markets:
+            - symbol: SPY
+              name: S&P 500
+            - symbol: BTC-USD
+              name: Bitcoin
+            - symbol: NVDA
+              name: NVIDIA
+            - symbol: AAPL
+              name: Apple
+            - symbol: MSFT
+              name: Microsoft
 - name: Default
   # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
   # hide-desktop-navigation: true
