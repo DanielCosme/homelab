@@ -1,14 +1,15 @@
 apiVersion: v1
 data:
   glance.yml: |
+    # Config: https://github.com/glanceapp/glance/blob/main/docs/configuration.md
     branding:
       custom-footer: |
-        <p>Configured and running from <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
+        <p>Configured and Deployed via GitOps at: <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
       # logo-url: /assets/logo.png
       # favicon-url: /assets/logo.png
-      # app-name: "My Dashboard"
+      app-name: "Daniel's Dashboard"
       # app-icon-url: "/assets/app-icon.png"
-      app-background-color: "#151519"
+      app-background-color: "#111C18"
 
     server:
       assets-path: /app/assets
