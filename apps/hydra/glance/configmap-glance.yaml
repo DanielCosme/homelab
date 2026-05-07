@@ -104,6 +104,7 @@ data:
                 - UC9fr5ejRTqZWIBn5CfqEKng # The Silent Gentleman
               # playlists:
               style: horizontal-cards
+              # limit
 
         - size: small
           widgets:
@@ -133,8 +134,7 @@ data:
               # Optionally hide the location from being displayed in the widget
               # hide-location: true
 
-    # - name: Entertainment
-    - name: Info
+    - name: Entertainment
       columns:
         - size: small
           widgets:
@@ -145,9 +145,19 @@ data:
 
         - size: full
           widgets:
+            - type: videos
+              title: Entertainment
+              channels:
+                - UCtinbF-Q-fVthA0qrFQTgXQ # Casey Neistat
+              # playlists:
+              style: grid-cards
+              # limit
+    - name: Info
+      columns:
+        - size: full
+          widgets:
             - type: calendar
               first-day-of-week: monday
-
         - size: small
           widgets:
             - type: markets
