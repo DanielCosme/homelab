@@ -23,8 +23,10 @@
             - title: Linkding
               url: https://link.danicos.me
             - title: Immich
+              icon: sh:immich
               url: https://photos.danicos.me
             - title: Immich VPN
+              icon: sh:immich
               url: http://hydra-0.orca-uaru.ts.net:30011
             - title: TrueNAS VPN
               url: http://apex-truenas.orca-uaru.ts.net
