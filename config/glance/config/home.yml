@@ -50,18 +50,22 @@
     - size: full
       widgets:
         - type: rss
-          limit: 10
-          # collapse-after: 3
+          limit: 15
+          collapse-after: 5
+          style: detailed-list
           cache: 12h
           feeds:
             - url: https://selfh.st/rss/
               title: selfh.st
+              # limit: 3
 
         - type: videos
+          title: Chill Music
           channels:
             - UCD3mA_LbjO8V515Hw1jlYhg # Cigarette in Paris
-            # - TheSilentGentleman-l8h
-            # - @AURALE_MUSIC
+            - UC9fr5ejRTqZWIBn5CfqEKng # The Silent Gentleman
+          # playlists:
+          style: horizontal-cards
 
     - size: small
       widgets:
@@ -81,6 +85,9 @@
             - timezone: Europe/Sofia
               label: Sofia (Bulgaria)
 
+        - type: calendar
+          first-day-of-week: monday
+
         - type: weather
           location: Montreal, Canada
           units: metric # alternatively "imperial"
@@ -88,8 +95,6 @@
           # Optionally hide the location from being displayed in the widget
           # hide-location: true
 
-        - type: calendar
-          first-day-of-week: monday
 # - name: Entertainment
 - name: Info
   columns:
