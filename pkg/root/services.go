@@ -45,12 +45,12 @@ var Immich = Service{
 
 var Glance = Service{
 	Name:  "glance",
-	Image: "",
-	Port:  0, // Server Port
-	// Public: &Public{
-	// 	URL:      "https://photos.danicos.me",
-	// 	NodePort: 30011,
-	// },
+	Image: "glanceapp/glance:v0.8.4",
+	Port:  8080, // Server Port
+	Public: &Public{
+		URL:      "https://home.danicos.me",
+		NodePort: 30009,
+	},
 }
 
 var (

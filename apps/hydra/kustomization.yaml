@@ -4,3 +4,4 @@ resources:
   - secrets/
   - linkding/
   - immich/
+  - glance/
