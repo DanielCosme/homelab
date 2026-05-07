@@ -99,7 +99,7 @@ data:
                   url: https://www.youtube.com/results?search_query={QUERY}
 
             - type: videos
-              title: Chill Music
+              title: Work Music
               channels:
                 - UCD3mA_LbjO8V515Hw1jlYhg # Cigarette in Paris
                 # - UC9fr5ejRTqZWIBn5CfqEKng # The Silent Gentleman
@@ -114,7 +114,11 @@ data:
               cache: 12h
               feeds:
                 - url: https://selfh.st/rss/
-                  title: selfh.st
+                - title: selfh.st
+                - url: http://orthochristian.com/xml/rss.xml
+                  title: Orthodoxy
+                - url: https://archlinux.org/feeds/news/
+                  title: Arch Linux (BTW)
                   # limit: 3
 
         - size: small
