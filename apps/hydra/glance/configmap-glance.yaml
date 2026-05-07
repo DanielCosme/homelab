@@ -3,7 +3,7 @@ data:
   glance.yml: |
     server:
       assets-path: /app/assets
-    # proxied: true
+      proxied: true
 
     # auth:
     # secret-key: # this must be set to a random value generated using the secret:make CLI command

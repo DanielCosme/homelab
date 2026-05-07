@@ -49,10 +49,6 @@ func Stack() stack.Stack {
 }
 
 func Deployment() apps.Deployment {
-	// MY_SECRET_TOKEN=123456  ?
-	// Config volume - ReadOnly?
-	// Assets volume - ReadOnly?
-	// Mount /etc/localtime (ReadOnly)
 	configVol := kube.NewVolumeFrom(kube.VolumeSourceConfigMap, "config", config_glance.Name)
 	assetsVol := kube.NewVolumeFrom(kube.VolumeSourceConfigMap, "assets", config_assets.Name)
 	localtimeVol := core.Volume{
