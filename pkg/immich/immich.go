@@ -83,7 +83,6 @@ func Stack() stack.Stack {
 
 func MachineLearning() apps.Deployment {
 	envMapping := map[string]string{
-		// "REDIS_PORT":  fmt.Sprintf("%d", RedisPort),
 		"IMMICH_PORT": fmt.Sprintf("%d", MachineLearningPort),
 	}
 	cacheVol := kube.NewVolumeFrom(kube.VolumeSourcePVC, "cache", machine_learning_pvc.Name)

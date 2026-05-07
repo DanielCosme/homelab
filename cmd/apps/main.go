@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"danicos.dev/daniel/go-kube/pkg/stack"
+	glance "danicos.dev/daniel/homelab/pkg"
 	"danicos.dev/daniel/homelab/pkg/cnpg"
 	"danicos.dev/daniel/homelab/pkg/flux"
 	"danicos.dev/daniel/homelab/pkg/immich"
@@ -41,6 +42,7 @@ func main() {
 	hydra_apps := map[string]stack.Stack{
 		"linkding": linkding.Stack(),
 		"immich":   immich.Stack(),
+		"glance":   glance.Stack(),
 	}
 	for name, s := range hydra_apps {
 		fmt.Printf("STACK: %s\n", name)

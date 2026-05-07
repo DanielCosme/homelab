@@ -43,6 +43,16 @@ var Immich = Service{
 	},
 }
 
+var Glance = Service{
+	Name:  "glance",
+	Image: "",
+	Port:  0, // Server Port
+	// Public: &Public{
+	// 	URL:      "https://photos.danicos.me",
+	// 	NodePort: 30011,
+	// },
+}
+
 var (
 	Longhorn            = "longhorn"
 	Monitoring          = "monitoring"
