@@ -48,6 +48,10 @@ data:
               description: "Hosted in my OVH Cloud VPS"
               color: 10 70 50
               links:
+                - title: Curious Ape
+                  url: https://ape.danicos.me
+                - title: Personal Webpage
+                  url: https://danicos.me
                 - title: Gitea
                   url: https://danicos.dev
             - title: "Homelab Hosted"
@@ -62,7 +66,7 @@ data:
                   url: https://apex-truenas.orca-uaru.ts.net:30011
             - title: "Non Self-Hosted"
               description: "Links for services I don't host myself"
-              color: 200 50 50
+              color: 100 40 25
               links:
                 - title: YouTube
                   url: https://www.youtube.com/
