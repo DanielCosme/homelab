@@ -91,22 +91,25 @@ data:
               first-day-of-week: monday
         - size: small
           widgets:
-            - type: clock
-              title: Home
-              hour-format: 24h
-              timezones:
-                - timezone: America/Montreal
-                  label: Montreal
-                - timezone: America/Bogota
-                  label: Bogota
-                - timezone: Europe/Madrid
-                  label: Madrid
-                - timezone: Europe/Sofia
-                  label: Sofia (Bulgaria)
-                - timezone: America/Vancouver
-                  label: Vancouver
-                - timezone: UTC
-                  label: UTC
+            - type: group
+              widgets:
+                - type: clock
+                  hour-format: 24h
+                  timezones:
+                    - timezone: America/Montreal
+                      label: Montreal
+                    - timezone: America/Vancouver
+                      label: Vancouver
+                    - timezone: UTC
+                      label: UTC
+                    - timezone: America/Bogota
+                      label: Bogota
+                    - timezone: Europe/Madrid
+                      label: Madrid
+                    - timezone: Europe/Sofia
+                      label: Sofia (Bulgaria)
+                - type: calendar
+                  first-day-of-week: monday
     - name: Default
       # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
       # hide-desktop-navigation: true
