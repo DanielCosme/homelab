@@ -9,12 +9,12 @@ theme:
 
 branding:
   custom-footer: |
-    <p>Configured and Deployed via GitOps at: <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
+    <p>Configured and Deployed via GitOps from: <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
   # logo-url: /assets/logo.png
   # favicon-url: /assets/logo.png
   app-name: "Daniel's Dashboard"
   # app-icon-url: "/assets/app-icon.png"
-  app-background-color: "#111C18"
+  # app-background-color: "#111C18"
 
 server:
   assets-path: /app/assets
