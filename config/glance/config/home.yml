@@ -90,7 +90,7 @@
 
         - type: calendar
           first-day-of-week: monday
-- name: Entertainment
+# - name: Entertainment
 - name: Info
   columns:
     - size: small
