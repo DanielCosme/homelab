@@ -40,7 +40,7 @@ data:
     # icon: sh:immich # sh for selfh.st icons https://selfh.st/icons/
     # icon: di:immich # di for Dashboard icons https://github.com/homarr-labs/dashboard-icons
     # icon: mdi:camera # mdi for Material Design icons https://pictogrammers.com/library/mdi/
-    - name: "Daniel's Dashboard"
+    - name: Home
       # head-widgets:
       columns:
         - size: small
@@ -136,25 +136,26 @@ data:
 
             - type: group
               widgets:
-                - type: calendar
-                  first-day-of-week: monday
-
                 - type: weather
                   location: Montreal, Canada
                   units: metric
                   hour-format: 24h
                   show-area-name: true
+                - type: calendar
+                  first-day-of-week: monday
+
             - type: releases
               show-source-icon: true
-              collapse-after: 10
-              limit: 50
+              # collapse-after: 10
+              # limit: 50
               repositories:
-                - glanceapp/glance
-                - dockerhub:glanceapp/glance
-                - dockerhub:alpine
+                - immich-app/immich
                 - go-gitea/gitea
+                - sissbruecker/linkding
+                - glanceapp/glance
                 - jellyfin/jellyfin
-                - codeberg:redict/redict
+                - fluxcd/flux2
+                - ghcr.io:cloudnative-pg/postgresql
 
     - name: Entertainment
       columns:
