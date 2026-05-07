@@ -87,6 +87,14 @@ data:
                       url: https://x.com/Cosmedani05
         - size: full
           widgets:
+            - type: videos
+              title: Chill Music
+              channels:
+                - UCD3mA_LbjO8V515Hw1jlYhg # Cigarette in Paris
+                - UC9fr5ejRTqZWIBn5CfqEKng # The Silent Gentleman
+              # playlists:
+              style: horizontal-cards
+
             - type: rss
               limit: 15
               collapse-after: 5
@@ -96,15 +104,6 @@ data:
                 - url: https://selfh.st/rss/
                   title: selfh.st
                   # limit: 3
-
-            - type: videos
-              title: Chill Music
-              channels:
-                - UCD3mA_LbjO8V515Hw1jlYhg # Cigarette in Paris
-                - UC9fr5ejRTqZWIBn5CfqEKng # The Silent Gentleman
-              # playlists:
-              style: horizontal-cards
-              # limit
 
         - size: small
           widgets:
@@ -175,8 +174,15 @@ data:
       columns:
         - size: full
           widgets:
-            - type: calendar
-              first-day-of-week: monday
+            - type: group
+              widgets:
+                - type: reddit
+                  subreddit: technology
+                  show-thumbnails: true
+                - type: reddit
+                  subreddit: selfhosted
+                  show-thumbnails: true
+
         - size: small
           widgets:
             - type: markets
@@ -199,22 +205,6 @@ data:
           widgets:
             - type: calendar
               first-day-of-week: monday
-
-        - size: full
-          widgets:
-            - type: group
-              widgets:
-                - type: hacker-news
-                - type: lobsters
-
-            - type: group
-              widgets:
-                - type: reddit
-                  subreddit: technology
-                  show-thumbnails: true
-                - type: reddit
-                  subreddit: selfhosted
-                  show-thumbnails: true
 
         - size: small
           widgets:
