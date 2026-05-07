@@ -1,6 +1,15 @@
 apiVersion: v1
 data:
   glance.yml: |
+    branding:
+      custom-footer: |
+        <p>Configured and running from <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
+      # logo-url: /assets/logo.png
+      # favicon-url: /assets/logo.png
+      # app-name: "My Dashboard"
+      # app-icon-url: "/assets/app-icon.png"
+      app-background-color: "#151519"
+
     server:
       assets-path: /app/assets
       proxied: true
@@ -23,6 +32,10 @@ data:
       # put its contents here, though multiple pages are easier to manage when separated
       - $include: home.yml
   home.yml: |
+    # icon: si:immich # si for Simple icons https://simpleicons.org/
+    # icon: sh:immich # sh for selfh.st icons https://selfh.st/icons/
+    # icon: di:immich # di for Dashboard icons https://github.com/homarr-labs/dashboard-icons
+    # icon: mdi:camera # mdi for Material Design icons https://pictogrammers.com/library/mdi/
     - name: Home
       columns:
         - size: full

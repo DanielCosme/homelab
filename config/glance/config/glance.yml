@@ -1,3 +1,12 @@
+branding:
+  custom-footer: |
+    <p>Configured and running from <a href="https://danicos.dev/daniel/homelab">Daniel's Homelab</a></p>
+  # logo-url: /assets/logo.png
+  # favicon-url: /assets/logo.png
+  # app-name: "My Dashboard"
+  # app-icon-url: "/assets/app-icon.png"
+  app-background-color: "#151519"
+
 server:
   assets-path: /app/assets
   proxied: true
