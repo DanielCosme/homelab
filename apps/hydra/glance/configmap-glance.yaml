@@ -25,7 +25,7 @@ data:
   home.yml: |
     - name: Home
       columns:
-        - size: small
+        - size: full
           widgets:
             - type: calendar
               first-day-of-week: monday
