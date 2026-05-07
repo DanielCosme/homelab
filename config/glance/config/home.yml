@@ -138,20 +138,6 @@
               style: grid-cards
               collapse-after-rows: 2
               limit: 16
-
-    - size: small
-      widgets:
-        - type: videos
-          title: Other
-          channels:
-            - UCtinbF-Q-fVthA0qrFQTgXQ # Casey Neistat
-            - UCp00ppkfPFBUTiiNNd8kS9Q # Buttery Bros
-          style: vertical-list
-
-- name: Info
-  columns:
-    - size: full
-      widgets:
         - type: group
           widgets:
             - type: reddit
@@ -163,15 +149,9 @@
 
     - size: small
       widgets:
-        - type: markets
-          markets:
-            - symbol: SPY
-              name: S&P 500
-            - symbol: BTC-USD
-              name: Bitcoin
-            - symbol: NVDA
-              name: NVIDIA
-            - symbol: AAPL
-              name: Apple
-            - symbol: MSFT
-              name: Microsoft
+        - type: videos
+          title: Other
+          channels:
+            - UCtinbF-Q-fVthA0qrFQTgXQ # Casey Neistat
+            - UCp00ppkfPFBUTiiNNd8kS9Q # Buttery Bros
+          style: vertical-list
