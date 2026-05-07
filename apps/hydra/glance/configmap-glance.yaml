@@ -95,9 +95,10 @@ data:
                 - url: https://selfh.st/rss/
                   title: selfh.st
 
-            - type: videos
+            - type: music
               channels:
                 - UCD3mA_LbjO8V515Hw1jlYhg # Cigarette in Paris
+                - TheSilentGentleman-l8h
 
             - type: twitch-channels
               channels:
