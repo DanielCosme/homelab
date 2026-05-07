@@ -48,18 +48,25 @@ data:
             - type: bookmarks
               groups:
                 - title: "Hosted in Homelab"
-                  description: "Hosted in my personal homlab, some of them accesible on my Private VPN, others publicly exposed via reverse proxy"
+                  description: "Hosted in my personal homlab"
                   color: 200 50 50
                   links:
                     - title: Immich
                       icon: sh:immich
                       url: https://photos.danicos.me
-                    - title: Immich VPN
-                      icon: sh:immich
-                      url: http://hydra-0.orca-uaru.ts.net:30011
                     - title: Linkding
                       icon: sh:linkding
                       url: https://link.danicos.me
+                    - title: TrueNAS VPN
+                      icon: sh:truenas-core
+                      url: http://apex-truenas.orca-uaru.ts.net
+                - title: "Hosted in Homelab VPN"
+                  description: "Hosted in my personal homlab, accesible only throught Private VPN"
+                  color: 200 40 40
+                  links:
+                    - title: Immich VPN
+                      icon: sh:immich
+                      url: http://hydra-0.orca-uaru.ts.net:30011
                     - title: TrueNAS VPN
                       icon: sh:truenas-core
                       url: http://apex-truenas.orca-uaru.ts.net
@@ -145,13 +152,14 @@ data:
         - size: full
           widgets:
             - type: videos
-              title: Homestead-esque
+              title: Homestead/Farm
               channels:
                 - UCv2Li-PxOya3XCL-St_4DkA # Homesteady
                 - UCkOTo20XS1LL95g2p6CcE3A # Few Acres Farm
                 - UCBn3itOeDjCeuol70nQq1cg # Domaie Sauvage
               style: grid-cards
               collapse-after-rows: 1
+              limit: 8
 
             - type: videos
               title: Hardware
@@ -160,6 +168,7 @@ data:
                 - UCKqKiBDpq9j29bXbBx0cfOw # BuildWit
               style: grid-cards
               collapse-after-rows: 1
+              limit: 8
 
         - size: small
           widgets:
