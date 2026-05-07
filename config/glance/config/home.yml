@@ -7,18 +7,31 @@
   columns:
     - size: small
       widgets:
+        - type: monitor
+          cache: 1m
+          title: Services Public
+          sites:
+            - title: Git platform (Gitea)
+              icon: sh:gitea
+              url: https://danicos.dev
+            - title: Immich
+              icon: sh:immich
+              url: https://photos.danicos.me
+            - title: Linkding
+              icon: sh:linkding
+              url: https://link.danicos.me
+        - type: monitor
+          cache: 1m
+          title: Services VPN
+          sites:
+            - title: Immich VPN
+              icon: sh:immich
+              url: http://hydra-0.orca-uaru.ts.net:30011
+            - title: TrueNAS VPN
+              icon: sh:truenas-core
+              url: http://apex-truenas.orca-uaru.ts.net
         - type: bookmarks
           groups:
-            - title: "Hosted in Homelab"
-              description: "Hosted in my personal homlab"
-              color: 200 50 50
-              links:
-                - title: Immich
-                  icon: sh:immich
-                  url: https://photos.danicos.me
-                - title: Linkding
-                  icon: sh:linkding
-                  url: https://link.danicos.me
             - title: "Hosted in the Cloud"
               description: "Hosted in my OVH Cloud VPS"
               color: 10 70 50
@@ -29,19 +42,6 @@
                 - title: Personal Webpage
                   icon: mdi:web
                   url: https://danicos.me
-                - title: Git platform (Gitea)
-                  icon: sh:gitea
-                  url: https://danicos.dev
-            - title: "Hosted in Homelab VPN"
-              description: "Hosted in my personal homlab, accesible only throught Private VPN"
-              color: 200 40 40
-              links:
-                - title: Immich VPN
-                  icon: sh:immich
-                  url: http://hydra-0.orca-uaru.ts.net:30011
-                - title: TrueNAS VPN
-                  icon: sh:truenas-core
-                  url: http://apex-truenas.orca-uaru.ts.net
             - title: "Public"
               color: 100 40 25
               links:
