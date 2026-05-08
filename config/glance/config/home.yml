@@ -14,6 +14,10 @@
             - title: Git platform (Gitea)
               icon: sh:gitea
               url: https://danicos.dev
+            - title: Vaultwarden (Password Manager)
+              icon: sh:vaultwarden
+              url: https://vault.danicos.me
+              check-url: https://vault.danicos.me/alive
             - title: Immich
               icon: sh:immich
               url: https://photos.danicos.me
