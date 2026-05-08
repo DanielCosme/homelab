@@ -78,7 +78,11 @@ func deployment() apps.Deployment {
 			storage,
 		},
 	}
-	return kube.NewDeployment(meta, pod_spec)
+	d := kube.NewDeployment(meta, pod_spec)
+	d.Spec.Strategy = apps.DeploymentStrategy{
+		Type: apps.RecreateDeploymentStrategyType,
+	}
+	return d
 }
 
 // kubectl -n linkding exec -it linking-67f686679d-2tfrk -- python manage.py createsuperuser --username=daniel --email=danicosme@pm.me

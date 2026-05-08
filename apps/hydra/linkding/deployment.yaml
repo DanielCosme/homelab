@@ -9,7 +9,8 @@ spec:
   selector:
     matchLabels:
       app: linking
-  strategy: {}
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
