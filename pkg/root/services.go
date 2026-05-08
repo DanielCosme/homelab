@@ -59,7 +59,7 @@ var Vaultwarden = Service{
 	Port:  80, // Server Port
 	Public: &Public{
 		URL:      "https://vault.danicos.me",
-		NodePort: 300012,
+		NodePort: 30012,
 	},
 }
 

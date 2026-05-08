@@ -7,7 +7,7 @@ metadata:
   namespace: vaultwarden
 spec:
   ports:
-  - nodePort: 300012
+  - nodePort: 30012
     port: 80
     targetPort: 0
   selector:
