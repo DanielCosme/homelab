@@ -71,11 +71,3 @@ var (
 	PG_CLUSTER_HOSTNAME = fmt.Sprintf("%s-rw.%s.svc.cluster.local", PGClusterNamespace.Name, PGClusterNamespace.Name)
 	PG_CLUSTER_PORT     = 5432
 )
-
-var (
-	TrueNAS_CSI               = "truenas-csi"
-	TrueNASURL                = "apex-truenas.orca-uaru.ts.net"
-	TrueNASProvisioner        = "csi.truenas.io"
-	TrueNASSTorageClassNFS    = "truenas-nfs"
-	TrueNASSTorageClass_iSCSI = "truenas-iscsi"
-)

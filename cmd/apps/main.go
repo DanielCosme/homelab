@@ -5,9 +5,9 @@ import (
 	"os"
 
 	"danicos.dev/daniel/go-kube/pkg/stack"
-	glance "danicos.dev/daniel/homelab/pkg"
 	"danicos.dev/daniel/homelab/pkg/cnpg"
 	"danicos.dev/daniel/homelab/pkg/flux"
+	"danicos.dev/daniel/homelab/pkg/glance"
 	"danicos.dev/daniel/homelab/pkg/immich"
 	"danicos.dev/daniel/homelab/pkg/linkding"
 	"danicos.dev/daniel/homelab/pkg/longhorn"

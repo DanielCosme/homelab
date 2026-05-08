@@ -45,10 +45,20 @@ const (
 )
 
 const (
-	RUSTFS              = "rustfs"
-	RUSTFS_IMAGE        = "rustfs/rustfs:1.0.0-beta.2"
-	RUSTFS_SERVER_PORT  = 9000
-	RUSTFS_CONSOLE_PORT = 9001
+	TrueNAS_CSI               = "truenas-csi"
+	TrueNASURL                = "apex-truenas.orca-uaru.ts.net"
+	TrueNASProvisioner        = "csi.truenas.io"
+	TrueNASSTorageClassNFS    = "truenas-nfs"
+	TrueNASSTorageClass_iSCSI = "truenas-iscsi"
+)
+
+const (
+	RUSTFS                   = "rustfs"
+	RUSTFS_IMAGE             = "rustfs/rustfs:1.0.0-beta.2"
+	RUSTFS_SERVER_PORT       = 9000
+	RUSTFS_CONSOLE_PORT      = 9001
+	RUSTFS_SERVER_NODE_PORT  = 30090
+	RUSTFS_CONSOLE_NODE_PORT = 90091
 )
 
 var (
