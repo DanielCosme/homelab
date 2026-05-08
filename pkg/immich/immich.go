@@ -117,7 +117,6 @@ func Deployment() apps.Deployment {
 	envMapping := map[string]string{
 		"REDIS_PORT":  fmt.Sprintf("%d", RedisPort),
 		"IMMICH_PORT": fmt.Sprintf("%d", root.Immich.Port),
-		"DUMMY_ENV":   "secret-token",
 	}
 	secretMapping := map[string]string{
 		"DB_HOSTNAME":      Secret.DBHostKey,
