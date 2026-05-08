@@ -19,8 +19,6 @@ spec:
       - env:
         - name: DOMAIN
           value: https://vault.danicos.me
-        - name: SIGNUPS_ALLOWED
-          value: "true"
         image: quay.io/vaultwarden/server:1.36.0
         name: vaultwarden
         ports:
