@@ -17,6 +17,8 @@ spec:
     spec:
       containers:
       - env:
+        - name: DUMMY_ENV
+          value: secret-token
         - name: IMMICH_PORT
           value: "2283"
         - name: REDIS_PORT
