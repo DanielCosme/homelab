@@ -79,9 +79,8 @@ func deployment() apps.Deployment {
 		},
 	}
 	d := kube.NewDeployment(meta, pod_spec)
-	d.Spec.Strategy = apps.DeploymentStrategy{
-		Type: apps.RecreateDeploymentStrategyType,
-	}
+	d.Spec.Strategy = apps.DeploymentStrategy{Type: apps.RecreateDeploymentStrategyType}
+	d.Spec.Replicas = new(int32(0))
 	return d
 }
 

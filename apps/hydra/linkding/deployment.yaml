@@ -6,6 +6,7 @@ metadata:
   name: linking
   namespace: linkding
 spec:
+  replicas: 0
   selector:
     matchLabels:
       app: linking
