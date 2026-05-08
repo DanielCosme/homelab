@@ -65,6 +65,7 @@ func init() {
 			Config.NFSServer:       root.TrueNASURL,
 			Config.ISCSIPortal:     fmt.Sprintf("%s:3260", root.TrueNASURL),
 			Config.ISCSIIQNBase:    fmt.Sprintf("iqn.2026-04.%s", strings.Join(split, ".")),
+			// apex-truenas.orca-uaru.ts.net
 		},
 	}
 }
