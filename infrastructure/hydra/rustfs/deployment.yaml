@@ -9,7 +9,8 @@ spec:
   selector:
     matchLabels:
       app: rustfs
-  strategy: {}
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -48,8 +49,12 @@ spec:
         volumeMounts:
         - mountPath: /data/rustfs0
           name: data0
+        - mountPath: /logs
+          name: logs
       volumes:
       - name: data0
         persistentVolumeClaim:
           claimName: rustfs-pvc
+      - emptyDir: {}
+        name: logs
 status: {}
