@@ -15,6 +15,7 @@ import (
 	"danicos.dev/daniel/homelab/pkg/postgres"
 	"danicos.dev/daniel/homelab/pkg/root"
 	"danicos.dev/daniel/homelab/pkg/truenas"
+	"danicos.dev/daniel/homelab/pkg/vaultwarden"
 	/*
 		apps "k8s.io/api/apps/v1"
 		core "k8s.io/api/core/v1"
@@ -40,9 +41,10 @@ func main() {
 	}
 
 	hydra_apps := map[string]stack.Stack{
-		"linkding": linkding.Stack(),
-		"immich":   immich.Stack(),
-		"glance":   glance.Stack(),
+		"linkding":    linkding.Stack(),
+		"immich":      immich.Stack(),
+		"glance":      glance.Stack(),
+		"vaultwarden": vaultwarden.Stack(),
 	}
 	for name, s := range hydra_apps {
 		fmt.Printf("STACK: %s\n", name)

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: vaultwarden
+  name: vaultwarden
+  namespace: vaultwarden
+spec:
+  ports:
+  - nodePort: 300012
+    port: 80
+    targetPort: 0
+  selector:
+    app: vaultwarden
+  type: NodePort
+status:
+  loadBalancer: {}
