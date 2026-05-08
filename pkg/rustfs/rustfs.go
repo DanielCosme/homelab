@@ -56,7 +56,7 @@ func Stack() stack.Stack {
 		map[string]any{
 			"namespace": Namespace,
 			"service":   srv,
-			// "pvc":        pvc,
+			"pvc":       pvc,
 			// "deployment": Deployment(),
 		},
 	)
