@@ -8,3 +8,4 @@ resources:
   - longhorn/
   - cloud-native-pg/
   - postgres/
+  - rustfs/
