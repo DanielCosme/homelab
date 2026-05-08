@@ -34,11 +34,6 @@
             - title: Syncthing VPN
               icon: sh:syncthing
               url: http://apex-truenas.orca-uaru.ts.net:8384
-            - title: Syncthing Local
-              icon: sh:syncthing
-              url: http://localhost:8384
-              alt-status-codes:
-                - 404
             - title: Immich VPN
               icon: sh:immich
               url: http://hydra-0.orca-uaru.ts.net:30011
@@ -63,6 +58,9 @@
                 - title: Tailscale Console
                   icon: sh:tailscale
                   url: https://login.tailscale.com/admin/machines
+                - title: Syncthing Local
+                  icon: sh:syncthing
+                  url: http://localhost:8384
     - size: full
       widgets:
         - type: search
