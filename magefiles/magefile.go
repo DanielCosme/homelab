@@ -90,6 +90,18 @@ func Flux_reconcile() error {
 	return r.RunV("Reconcile flux", t)
 }
 
+// Suspend flux
+func Flux_suspend() error {
+	t := target.NewA("flux", "--kubeconfig", "/home/daniel/.kube/hydra", "suspend", "source", "git", "flux-system")
+	return r.RunV("Suspend flux", t)
+}
+
+// Suspend flux
+func Flux_resume() error {
+	t := target.NewA("flux", "--kubeconfig", "/home/daniel/.kube/hydra", "resume", "source", "git", "flux-system")
+	return r.RunV("Resume flux", t)
+}
+
 // Gets flux status
 func Flux_get() error {
 	t := target.NewA("flux", "--kubeconfig", "/home/daniel/.kube/hydra", "get", "kustomizations")

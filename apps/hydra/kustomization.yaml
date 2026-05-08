@@ -5,4 +5,4 @@ resources:
   - linkding/
   - immich/
   - glance/
-  # - vaultwarden/
+  - vaultwarden/

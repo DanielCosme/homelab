@@ -79,6 +79,8 @@ func deployment() apps.Deployment {
 		},
 	}
 	d := kube.NewDeployment(meta, pod_spec)
+	// NOTE: For deployments that use PVCs with RWO (from longhorn) is better to use the
+	// 	recreate strategy in order to avoid "Multi-Attach error for volume" errors.
 	d.Spec.Strategy = apps.DeploymentStrategy{Type: apps.RecreateDeploymentStrategyType}
 	return d
 }

@@ -37,8 +37,8 @@ func Stack() stack.Stack {
 
 func Deployment() apps.Deployment {
 	envMap := map[string]string{
-		"DOMAIN": root.Vaultwarden.Public.URL,
-		// "SIGNUPS_ALLOWED": "true",
+		"DOMAIN":          root.Vaultwarden.Public.URL,
+		"SIGNUPS_ALLOWED": "true",
 	}
 	dataVol := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
 	podSpec := core.PodSpec{
@@ -56,5 +56,9 @@ func Deployment() apps.Deployment {
 			dataVol,
 		},
 	}
-	return kube.NewDeployment(meta, podSpec)
+	d := kube.NewDeployment(meta, podSpec)
+	// NOTE: For deployments that use PVCs with RWO (from longhorn) is better to use the
+	// 	recreate strategy in order to avoid "Multi-Attach error for volume" errors.
+	d.Spec.Strategy = apps.DeploymentStrategy{Type: apps.RecreateDeploymentStrategyType}
+	return d
 }
