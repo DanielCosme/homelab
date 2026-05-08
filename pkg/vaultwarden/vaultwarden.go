@@ -37,7 +37,7 @@ func Stack() stack.Stack {
 
 func Deployment() apps.Deployment {
 	envMap := map[string]string{
-		// "DOMAIN": root.Vaultwarden.Public.URL,
+		"DOMAIN":          root.Vaultwarden.Public.URL,
 		"SIGNUPS_ALLOWED": "true",
 	}
 	dataVol := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
