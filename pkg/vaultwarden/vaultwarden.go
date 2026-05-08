@@ -10,12 +10,15 @@ import (
 var Namespace = kube.Namespace(root.Vaultwarden.Name)
 var meta kube.Metadata
 var srv core.Service
+var pvc core.PersistentVolumeClaim
 
 func init() {
 	meta = kube.NewMetadata(root.Vaultwarden.Name, Namespace)
 	srv = meta.Service(root.Vaultwarden.Port)
 	srv.Spec.Type = core.ServiceTypeNodePort
 	srv.Spec.Ports[0].NodePort = int32(root.Vaultwarden.Public.NodePort)
+
+	pvc = meta.PVC()
 }
 
 func Stack() stack.Stack {
@@ -24,6 +27,7 @@ func Stack() stack.Stack {
 		map[string]any{
 			"namespace": Namespace,
 			"service":   srv,
+			"pvc":       pvc,
 			// "deployment":       Deployment(),
 		},
 	)
