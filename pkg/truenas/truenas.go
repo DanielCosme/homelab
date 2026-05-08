@@ -59,12 +59,12 @@ func init() {
 		TypeMeta:   kube.ConfigMapMeta,
 		ObjectMeta: config_meta.Meta(),
 		Data: map[string]string{
-			Config.TruenasURL:      fmt.Sprintf("wss://%s/api/current", root.TrueNASURL),
+			Config.TruenasURL:      fmt.Sprintf("wss://%s/api/current", root.TRUENAS_IP),
 			Config.TrueNASInsecure: "true",
 			Config.DefaultPool:     "datapool",
-			Config.NFSServer:       root.TrueNASURL,
-			Config.ISCSIPortal:     fmt.Sprintf("%s:3260", root.TrueNASURL),
-			Config.ISCSIIQNBase:    fmt.Sprintf("iqn.2026-04.%s", strings.Join(split, ".")),
+			Config.NFSServer:       root.TRUENAS_IP,
+			Config.ISCSIPortal:     fmt.Sprintf("%s:3260", root.TRUENAS_IP),
+			// Config.ISCSIIQNBase:    fmt.Sprintf("iqn.2026-04.%s", strings.Join(split, ".")),
 			// apex-truenas.orca-uaru.ts.net
 			// 10.0.0.57
 		},
@@ -85,9 +85,9 @@ func Stack() stack.Stack {
 			// "node-binding":               kube.ClusterRoleBinding(nodeRole.Name+"-binding", nodeSA, nodeRole),
 			// "node-deamonset": nodeCSI(),
 			// "CSIDriver":                  CSIDriver(root.TrueNASProvisioner),
-			"config":              config,
-			"nfs-storage-class":   NFSStorageClass,
-			"iscsi-storage-class": iSCSIStorageClass,
+			"config":            config,
+			"nfs-storage-class": NFSStorageClass,
+			// "iscsi-storage-class": iSCSIStorageClass,
 		},
 	)
 	return kz.Stack(root.TrueNAS_CSI)

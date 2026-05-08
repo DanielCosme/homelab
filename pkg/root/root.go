@@ -50,6 +50,7 @@ const (
 	TrueNASProvisioner        = "csi.truenas.io"
 	TrueNASSTorageClassNFS    = "truenas-nfs"
 	TrueNASSTorageClass_iSCSI = "truenas-iscsi"
+	TRUENAS_IP                = "10.0.0.57"
 )
 
 const (

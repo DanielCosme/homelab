@@ -1,11 +1,10 @@
 apiVersion: v1
 data:
   defaultPool: datapool
-  iscsiIQNBase: iqn.2026-04.net.ts.orca-uaru.apex-truenas
-  iscsiPortal: apex-truenas.orca-uaru.ts.net:3260
-  nfsServer: apex-truenas.orca-uaru.ts.net
+  iscsiPortal: 10.0.0.57:3260
+  nfsServer: 10.0.0.57
   truenasInsecure: "true"
-  truenasURL: wss://apex-truenas.orca-uaru.ts.net/api/current
+  truenasURL: wss://10.0.0.57/api/current
 kind: ConfigMap
 metadata:
   name: truenas-csi-config
