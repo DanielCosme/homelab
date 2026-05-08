@@ -4,6 +4,7 @@ import (
 	"danicos.dev/daniel/go-kube/pkg/kube"
 	"danicos.dev/daniel/go-kube/pkg/stack"
 	"danicos.dev/daniel/homelab/pkg/root"
+	apps "k8s.io/api/apps/v1"
 	core "k8s.io/api/core/v1"
 )
 
@@ -25,27 +26,35 @@ func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
 		meta,
 		map[string]any{
-			"namespace": Namespace,
-			"service":   srv,
-			"pvc":       pvc,
-			// "deployment":       Deployment(),
+			"namespace":  Namespace,
+			"service":    srv,
+			"pvc":        pvc,
+			"deployment": Deployment(),
 		},
 	)
 	return kz.Stack("vaultwarden")
 }
 
-/*
-services:
-  vaultwarden:
-    image: vaultwarden/server:latest
-    container_name: vaultwarden
-    restart: always
-    environment:
-      # DOMAIN: "https://vaultwarden.example.com"  # required when using a reverse proxy; your domain; vaultwarden needs to know it's https to work properly with attachments
-      SIGNUPS_ALLOWED: "true" # Deactivate this with "false" after you have created your account so that no strangers can register
-    volumes:
-      - ./vw-data:/data # the path before the : can be changed
-    ports:
-      - 11001:80 # you can replace the 11001 with your preferred port
-
-*/
+func Deployment() apps.Deployment {
+	envMap := map[string]string{
+		// "DOMAIN": root.Vaultwarden.Public.URL,
+		"SIGNUPS_ALLOWED": "true",
+	}
+	dataVol := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
+	podSpec := core.PodSpec{
+		Containers: []core.Container{{
+			Name:  root.Vaultwarden.Name,
+			Image: root.Vaultwarden.Image,
+			Ports: []core.ContainerPort{{ContainerPort: root.Vaultwarden.Port}},
+			Env:   kube.NewEnvVar(envMap),
+			VolumeMounts: []core.VolumeMount{{
+				Name:      dataVol.Name,
+				MountPath: "/data",
+			}},
+		}},
+		Volumes: []core.Volume{
+			dataVol,
+		},
+	}
+	return kube.NewDeployment(meta, podSpec)
+}

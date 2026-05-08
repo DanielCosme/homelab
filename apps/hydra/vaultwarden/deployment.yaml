@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vaultwarden
+  name: vaultwarden
+  namespace: vaultwarden
+spec:
+  selector:
+    matchLabels:
+      app: vaultwarden
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: vaultwarden
+    spec:
+      containers:
+      - env:
+        - name: SIGNUPS_ALLOWED
+          value: "true"
+        image: quay.io/vaultwarden/server:1.36.0
+        name: vaultwarden
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /data
+          name: data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: vaultwarden-pvc
+status: {}
