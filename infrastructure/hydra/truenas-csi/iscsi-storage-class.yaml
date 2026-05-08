@@ -6,6 +6,8 @@ metadata:
 parameters:
   compression: LZ4
   iscsi.blocksize: "4096"
+  iscsi.initiators: ALL
+  iscsi.networks: 0.0.0.0/0
   protocol: iscsi
   volblocksize: 16K
 provisioner: csi.truenas.io

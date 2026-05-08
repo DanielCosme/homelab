@@ -54,10 +54,10 @@ func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
 		meta,
 		map[string]any{
-			"namespace":  Namespace,
-			"service":    srv,
-			"pvc":        pvc,
-			"deployment": Deployment(),
+			"namespace": Namespace,
+			// "service":    srv,
+			// "pvc":        pvc,
+			// "deployment": Deployment(),
 		},
 	)
 	return kz.Stack("rustfs")

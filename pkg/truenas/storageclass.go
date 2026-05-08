@@ -10,6 +10,17 @@ import (
 var NFSStorageClass storage.StorageClass
 var iSCSIStorageClass storage.StorageClass
 
+/*
+volblocksize	ZVOL block size	512, 1K, 2K, 4K, 8K, 16K, 32K, 64K, 128K
+iscsi.blocksize	iSCSI logical block size	512, 1024, 2048, 4096
+iscsi.chapUser	CHAP username	string
+iscsi.chapSecret	CHAP password (12-16 chars)	string
+iscsi.chapPeerUser	Mutual CHAP peer user	string
+iscsi.chapPeerSecret	Mutual CHAP peer password	string
+iscsi.initiators	Allowed initiator IQNs	comma-separated
+iscsi.networks	Allowed network CIDRs	comma-separated
+*/
+
 func init() {
 	/*
 		From:  https://github.com/truenas/truenas-csi
@@ -33,10 +44,12 @@ func init() {
 		ObjectMeta:  kube.ObjectMeta(root.TrueNASSTorageClass_iSCSI, ""),
 		Provisioner: root.TrueNASProvisioner,
 		Parameters: map[string]string{
-			"protocol":        "iscsi",
-			"compression":     "LZ4",
-			"volblocksize":    "16K",
-			"iscsi.blocksize": "4096",
+			"protocol":         "iscsi",
+			"compression":      "LZ4",
+			"volblocksize":     "16K",
+			"iscsi.blocksize":  "4096",
+			"iscsi.initiators": "ALL",
+			"iscsi.networks":   "0.0.0.0/0",
 		},
 		ReclaimPolicy:        new(core.PersistentVolumeReclaimDelete),
 		VolumeBindingMode:    new(storage.VolumeBindingImmediate),
