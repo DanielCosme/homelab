@@ -52,7 +52,7 @@ data:
                 - title: Git platform (Gitea)
                   icon: sh:gitea
                   url: https://danicos.dev
-                - title: Vaultwarden (Password Manager)
+                - title: Vaultwarden
                   icon: sh:vaultwarden
                   url: https://vault.danicos.me
                   check-url: https://vault.danicos.me/alive
@@ -75,9 +75,13 @@ data:
                 - title: Linkding VPN
                   icon: sh:linkding
                   url: http://hydra-0.orca-uaru.ts.net:30010
+                - title: Syncthing VPN
+                  icon: sh:syncthing
+                  url: http://apex-truenas.orca-uaru.ts.net:8384
                 - title: TrueNAS VPN
                   icon: sh:truenas-core
                   url: http://apex-truenas.orca-uaru.ts.net
+
             - type: bookmarks
               groups:
                 - color: 100 40 25
@@ -143,10 +147,10 @@ data:
             - type: clock
               hour-format: 24h
               timezones:
-                - timezone: America/Bogota
-                  label: Bogota
                 - timezone: America/Vancouver
                   label: Vancouver
+                - timezone: America/Bogota
+                  label: Bogota
                 - timezone: America/Montreal
                   label: Montreal
                 - timezone: UTC
