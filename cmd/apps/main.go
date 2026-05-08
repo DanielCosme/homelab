@@ -14,6 +14,7 @@ import (
 	"danicos.dev/daniel/homelab/pkg/monitoring"
 	"danicos.dev/daniel/homelab/pkg/postgres"
 	"danicos.dev/daniel/homelab/pkg/root"
+	"danicos.dev/daniel/homelab/pkg/rustfs"
 	"danicos.dev/daniel/homelab/pkg/truenas"
 	"danicos.dev/daniel/homelab/pkg/vaultwarden"
 	/*
@@ -33,6 +34,7 @@ func main() {
 		"truenas-csi":     truenas.Stack(),
 		"cloud-native-pg": cnpg.Stack(),
 		"postgres":        postgres.Stack(),
+		"rustfs":          rustfs.Stack(),
 	}
 	for name, s := range hydra_infrastructure {
 		fmt.Printf("STACK: %s\n", name)

@@ -44,6 +44,13 @@ const (
 	PG_VERSION_18_IMAGE                = "ghcr.io/cloudnative-pg/postgresql:18.3-minimal-trixie"
 )
 
+const (
+	RUSTFS              = "rustfs"
+	RUSTFS_IMAGE        = "rustfs/rustfs:1.0.0-beta.2"
+	RUSTFS_SERVER_PORT  = 9000
+	RUSTFS_CONSOLE_PORT = 9001
+)
+
 var (
 	ContainerSecurityContext = &core.SecurityContext{
 		AllowPrivilegeEscalation: new(false),
