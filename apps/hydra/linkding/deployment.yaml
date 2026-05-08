@@ -17,8 +17,6 @@ spec:
     spec:
       containers:
       - env:
-        - name: DUMMY_ENV
-          value: secret-token
         - name: LD_CSRF_TRUSTED_ORIGINS
           value: https://link.danicos.me
         - name: LD_SUPERUSER_NAME

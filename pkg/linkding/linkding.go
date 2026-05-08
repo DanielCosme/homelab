@@ -48,7 +48,6 @@ func deployment() apps.Deployment {
 	storage := kube.NewVolumeFrom(kube.VolumeSourcePVC, "data", pvc.Name)
 	envMapping := map[string]string{
 		"LD_CSRF_TRUSTED_ORIGINS": root.Linkding.Public.URL,
-		"DUMMY_ENV":               "secret-token",
 	}
 	secretMapping := map[string]string{
 		"LD_SUPERUSER_NAME":     Secret.SuperUserKey,
