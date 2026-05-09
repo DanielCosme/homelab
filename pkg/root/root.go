@@ -55,7 +55,7 @@ const (
 
 const (
 	RUSTFS                   = "rustfs"
-	RUSTFS_IMAGE             = "rustfs/rustfs:1.0.0-beta.2"
+	RUSTFS_IMAGE             = "rustfs/rustfs:latest"
 	RUSTFS_SERVER_PORT       = 9000
 	RUSTFS_CONSOLE_PORT      = 9001
 	RUSTFS_SERVER_NODE_PORT  = 30090

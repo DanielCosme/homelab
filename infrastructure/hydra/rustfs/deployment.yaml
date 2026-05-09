@@ -40,7 +40,7 @@ spec:
             secretKeyRef:
               key: secret-key
               name: rustfs-secret
-        image: rustfs/rustfs:1.0.0-beta.2
+        image: rustfs/rustfs:latest
         name: rustfs
         ports:
         - containerPort: 9000
