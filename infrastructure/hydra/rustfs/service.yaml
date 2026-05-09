@@ -8,9 +8,11 @@ metadata:
 spec:
   ports:
   - name: console
+    nodePort: 30091
     port: 9001
     targetPort: 0
   - name: server
+    nodePort: 30090
     port: 9000
     targetPort: 0
   selector:

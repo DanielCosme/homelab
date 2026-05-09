@@ -36,7 +36,7 @@ func init() {
 		{
 			Name:     "server",
 			Port:     root.RUSTFS_SERVER_PORT,
-			NodePort: root.RUSTFS_CONSOLE_NODE_PORT,
+			NodePort: root.RUSTFS_SERVER_NODE_PORT,
 		},
 	}...)
 	srv.Spec.Type = core.ServiceTypeNodePort

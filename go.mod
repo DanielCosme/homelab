@@ -3,7 +3,7 @@ module danicos.dev/daniel/homelab
 go 1.26.2
 
 require (
-	danicos.dev/daniel/go-kube v1.14.0
+	danicos.dev/daniel/go-kube v1.14.1
 	github.com/cloudnative-pg/api v1.29.0
 	github.com/fatih/color v1.19.0
 	github.com/fluxcd/helm-controller/api v1.5.4
