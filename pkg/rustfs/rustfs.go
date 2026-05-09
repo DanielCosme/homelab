@@ -42,7 +42,7 @@ func init() {
 	srv.Spec.Type = core.ServiceTypeNodePort
 
 	pvc = meta.PVCFrom(kube.StorageRequests20Gi)
-	pvc.Spec.StorageClassName = new(root.TrueNASSTorageClass_iSCSI)
+	pvc.Spec.StorageClassName = new(root.TrueNASSTorageClassNFS)
 	// TODO: restrict privledge escalation in pod
 	//
 	// s3.danicos.dev (API server)
@@ -54,10 +54,10 @@ func Stack() stack.Stack {
 	kz := kube.NewKuztomizedStack(
 		meta,
 		map[string]any{
-			"namespace": Namespace,
-			"service":   srv,
-			// "pvc":        pvc,
-			// "deployment": Deployment(),
+			"namespace":  Namespace,
+			"service":    srv,
+			"pvc":        pvc,
+			"deployment": Deployment(),
 		},
 	)
 	return kz.Stack("rustfs")
