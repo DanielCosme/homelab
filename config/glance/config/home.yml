@@ -90,7 +90,7 @@
               cache: 12h
               feeds:
                 - url: https://pmbanugo.me/rss.xml
-                  title: Odin programming
+                  title: Hight performance web
                 - url: https://archlinux.org/feeds/news
                   title: Arch Linux (BTW)
                   # limit: 3
