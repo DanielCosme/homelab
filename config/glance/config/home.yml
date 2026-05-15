@@ -89,8 +89,8 @@
               style: detailed-list
               cache: 12h
               feeds:
-                - url: https://selfh.st/rss/
-                - title: selfh.st
+                - url: https://pmbanugo.me/rss.xml
+                  title: Odin programming
                 - url: https://archlinux.org/feeds/news
                   title: Arch Linux (BTW)
                   # limit: 3
