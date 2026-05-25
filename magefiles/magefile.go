@@ -107,3 +107,8 @@ func Flux_get() error {
 	t := target.NewA("flux", "--kubeconfig", "/home/daniel/.kube/hydra", "get", "kustomizations")
 	return r.RunV("Get flux", t)
 }
+
+func K9s() {
+	t := target.NewA("k9s", "--kubeconfig", "/home/daniel/.kube/hydra")
+	r.RunV("Run k9s", t)
+}
