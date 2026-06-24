@@ -68,5 +68,3 @@ Distributed Storage from:
 	
 ## NFS
 Via NAS for Files, like photos, videos, etc...
-## ISCS
-Via NAS for Databases
