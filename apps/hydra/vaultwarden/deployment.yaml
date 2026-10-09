@@ -20,7 +20,7 @@ spec:
       - env:
         - name: DOMAIN
           value: https://vault.danicos.me
-        image: quay.io/vaultwarden/server:1.36.0
+        image: quay.io/vaultwarden/server:1.37.4
         name: vaultwarden
         ports:
         - containerPort: 80

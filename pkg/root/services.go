@@ -55,7 +55,7 @@ var Glance = Service{
 
 var Vaultwarden = Service{
 	Name:  "vaultwarden",
-	Image: "quay.io/vaultwarden/server:1.36.0",
+	Image: "quay.io/vaultwarden/server:1.37.4",
 	Port:  80, // Server Port
 	Public: &Public{
 		URL:      "https://vault.danicos.me",
